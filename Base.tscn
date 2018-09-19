@@ -1,0 +1,1417 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Assets/Scripts/Utility/Base.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/Menus/Main_Menu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Scripts/Menus/NewGame_Menu.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Scripts/Menus/LoadGame_Menu.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Scripts/Generation/GeneratingGalaxy_Screen.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Scripts/Generation/SSGenerator.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Scripts/Generation/PlanetGenerator.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Scripts/Utility/ActiveGame.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Art/Ships/EscapePod.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Scripts/Ships/PlayerPlaceholder.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Scripts/UI/InputHandler.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Art/Textures/RoundedRectWhite.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Scripts/UI/Terminal.gd" type="Script" id=13]
+[ext_resource path="res://Assets/Art/Icons/SectorMap/SectorMapSun.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Art/Icons/GalaxyMap/CurrentGTile.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Scripts/UI/InterfaceBar.gd" type="Script" id=16]
+[ext_resource path="res://Assets/Scripts/Menus/PauseMenu.gd" type="Script" id=17]
+[ext_resource path="res://Assets/Scripts/UI/GalaxyMap.gd" type="Script" id=18]
+[ext_resource path="res://Assets/Art/Icons/gridSelector16.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Art/Icons/GalaxyMap/jumpvalidity.tres" type="TileSet" id=20]
+[ext_resource path="res://Assets/Scripts/Geography/Galaxy.gd" type="Script" id=21]
+[ext_resource path="res://Assets/Scripts/Utility/Miscellaneous.gd" type="Script" id=22]
+[ext_resource path="res://Assets/Scripts/Utility/MarkovNamers.gd" type="Script" id=23]
+[ext_resource path="res://Assets/Scripts/Utility/MarkovNamer.gd" type="Script" id=24]
+
+[node name="Base" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause", "Transform" ]
+
+[node name="Screens" type="Node2D" parent="." index="0"]
+
+pause_mode = 2
+editor/display_folded = true
+_sections_unfolded = [ "Pause", "Transform" ]
+
+[node name="Menu_Screens" type="Node2D" parent="Screens" index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Main_Menu" type="Node2D" parent="Screens/Menu_Screens" index="0"]
+
+script = ExtResource( 2 )
+
+[node name="MM_Background" type="ColorRect" parent="Screens/Menu_Screens/Main_Menu" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -256.0
+margin_top = -384.0
+margin_right = 256.0
+margin_bottom = 384.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.666667, 0.666667, 0.666667, 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="MM_Label" type="Label" parent="Screens/Menu_Screens/Main_Menu/MM_Background" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Main Menu"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="NewGame_Button" type="Button" parent="Screens/Menu_Screens/Main_Menu/MM_Background" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 256.0
+margin_right = 384.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "New Game"
+flat = false
+align = 1
+
+[node name="LoadGame_Button" type="Button" parent="Screens/Menu_Screens/Main_Menu/MM_Background" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 384.0
+margin_right = 384.0
+margin_bottom = 448.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Load Game"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Exit_Button" type="Button" parent="Screens/Menu_Screens/Main_Menu/MM_Background" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 512.0
+margin_right = 384.0
+margin_bottom = 576.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Exit"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Test_Button" type="Button" parent="Screens/Menu_Screens/Main_Menu/MM_Background" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 640.0
+margin_right = 384.0
+margin_bottom = 704.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Test"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NewGame_Menu" type="Node2D" parent="Screens/Menu_Screens" index="1"]
+
+editor/display_folded = true
+visible = false
+script = ExtResource( 3 )
+
+[node name="NG_Background" type="ColorRect" parent="Screens/Menu_Screens/NewGame_Menu" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -160.0
+margin_top = -160.0
+margin_right = 160.0
+margin_bottom = 160.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="GenerateGalaxy_Button" type="Button" parent="Screens/Menu_Screens/NewGame_Menu/NG_Background" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Galaxy Generation"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LoadGame_Menu" type="Node2D" parent="Screens/Menu_Screens" index="2"]
+
+editor/display_folded = true
+visible = false
+script = ExtResource( 4 )
+
+[node name="LG_Background" type="ColorRect" parent="Screens/Menu_Screens/LoadGame_Menu" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -256.0
+margin_top = -128.0
+margin_right = 256.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="LG_Label" type="Label" parent="Screens/Menu_Screens/LoadGame_Menu/LG_Background" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = -64.0
+margin_right = 384.0
+margin_bottom = -32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Load Game"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LG_Button" type="Button" parent="Screens/Menu_Screens/LoadGame_Menu/LG_Background" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 384.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Load"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SlotName_LineEdit" type="LineEdit" parent="Screens/Menu_Screens/LoadGame_Menu/LG_Background" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 384.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_text = "Enter save slot name"
+placeholder_alpha = 0.6
+caret_blink = true
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Placeholder", "Rect" ]
+
+[node name="SlotError_Label" type="Label" parent="Screens/Menu_Screens/LoadGame_Menu/LG_Background" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 16.0
+margin_right = 384.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors" ]
+
+[node name="Options_Menu" type="Node2D" parent="Screens/Menu_Screens" index="3"]
+
+visible = false
+
+[node name="Achievements_Menu" type="Node2D" parent="Screens/Menu_Screens" index="4"]
+
+visible = false
+
+[node name="GeneratingGalaxy_Screen" type="Node2D" parent="Screens" index="1"]
+
+editor/display_folded = true
+visible = false
+script = ExtResource( 5 )
+
+[node name="GG_Background" type="ColorRect" parent="Screens/GeneratingGalaxy_Screen" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -256.0
+margin_top = -128.0
+margin_right = 256.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="GG_Label" type="Label" parent="Screens/GeneratingGalaxy_Screen/GG_Background" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = -64.0
+margin_right = 384.0
+margin_bottom = -32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Galaxy Generation"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="GG_Button" type="Button" parent="Screens/GeneratingGalaxy_Screen/GG_Background" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 384.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Generate Galaxy"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="BeginGame_Button" type="Button" parent="Screens/GeneratingGalaxy_Screen/GG_Background" index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 384.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Begin Your Journey"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SlotName_LineEdit" type="LineEdit" parent="Screens/GeneratingGalaxy_Screen/GG_Background" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 384.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_text = "Enter save slot name"
+placeholder_alpha = 0.6
+caret_blink = true
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Placeholder", "Rect" ]
+
+[node name="SlotError_Label" type="Label" parent="Screens/GeneratingGalaxy_Screen/GG_Background" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 16.0
+margin_right = 384.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors" ]
+
+[node name="SSGenerator" type="Node" parent="Screens/GeneratingGalaxy_Screen" index="1"]
+
+script = ExtResource( 6 )
+
+[node name="PlanetGenerator" type="Node" parent="Screens/GeneratingGalaxy_Screen" index="2"]
+
+script = ExtResource( 7 )
+
+[node name="ActiveGame" type="Node2D" parent="." index="1"]
+
+visible = false
+script = ExtResource( 8 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="Background_ColorRect" type="ColorRect" parent="ActiveGame" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 16384.0
+margin_bottom = 16384.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="PlayerPlaceholder" type="Sprite" parent="ActiveGame" index="1"]
+
+editor/display_folded = true
+texture = ExtResource( 9 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Transform" ]
+maxSpeed = 300
+
+[node name="Camera2D" type="Camera2D" parent="ActiveGame/PlayerPlaceholder" index="0"]
+
+anchor_mode = 1
+rotating = true
+current = false
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="InputHandler" type="Node2D" parent="ActiveGame" index="2"]
+
+script = ExtResource( 11 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="FlightHUD_CanvasLayer" type="CanvasLayer" parent="ActiveGame" index="3"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Label" type="Label" parent="ActiveGame/FlightHUD_CanvasLayer" index="0"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -72.0
+margin_right = 72.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Call of the Stars"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="Throttle_TextureProgress" type="TextureProgress" parent="ActiveGame/FlightHUD_CanvasLayer" index="1"]
+
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -192.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 25.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 12 )
+fill_mode = 3
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = true
+stretch_margin_top = 8
+stretch_margin_bottom = 8
+_sections_unfolded = [ "Anchor", "Margin", "Textures" ]
+
+[node name="Terminal_ColorRect" type="ColorRect" parent="ActiveGame/FlightHUD_CanvasLayer" index="2"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -224.0
+margin_top = -296.0
+margin_right = 224.0
+margin_bottom = -32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.666667, 0.666667, 0.666667, 0.784314 )
+script = ExtResource( 13 )
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="SectorMap_CR" type="ColorRect" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 260.0
+margin_bottom = 260.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="Sun" type="Sprite" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR" index="0"]
+
+position = Vector2( 128, 128 )
+texture = ExtResource( 14 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Player" type="Sprite" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR" index="1"]
+
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="SectorName_Label" type="Label" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 264.0
+margin_top = 4.0
+margin_right = 444.0
+margin_bottom = 28.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SECTOR NAME"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="ModuleBar_HBoxContainer" type="HBoxContainer" parent="ActiveGame/FlightHUD_CanvasLayer" index="3"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = -128.0
+margin_right = 448.0
+margin_bottom = -64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 0
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="Button1" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/ModuleBar_HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button2" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/ModuleBar_HBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button3" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/ModuleBar_HBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_right = 192.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button4" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/ModuleBar_HBoxContainer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_right = 256.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button5" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/ModuleBar_HBoxContainer" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 256.0
+margin_right = 320.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button6" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/ModuleBar_HBoxContainer" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 320.0
+margin_right = 384.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="InterfaceBar_HBoxContainer" type="HBoxContainer" parent="ActiveGame/FlightHUD_CanvasLayer" index="4"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -448.0
+margin_top = -128.0
+margin_right = -64.0
+margin_bottom = -64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 0
+script = ExtResource( 16 )
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="Button7" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button8" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button9" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_right = 192.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button0" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_right = 256.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button-" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 256.0
+margin_right = 320.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="Button=" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 320.0
+margin_right = 384.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="PauseMenu_CanvasLayer" type="CanvasLayer" parent="ActiveGame" index="4"]
+
+pause_mode = 2
+editor/display_folded = true
+layer = 2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 17 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="PauseMenu_Background" type="ColorRect" parent="ActiveGame/PauseMenu_CanvasLayer" index="0"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -322.0
+margin_right = 192.0
+margin_bottom = 190.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 384.0
+margin_bottom = 512.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Margin" ]
+
+[node name="Resume_Button" type="Button" parent="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 384.0
+margin_bottom = 125.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Resume"
+flat = false
+align = 1
+
+[node name="Save_Button" type="Button" parent="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 129.0
+margin_right = 384.0
+margin_bottom = 254.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Save Game"
+flat = false
+align = 1
+
+[node name="Load_Button" type="Button" parent="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 258.0
+margin_right = 384.0
+margin_bottom = 383.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Load Game"
+flat = false
+align = 1
+
+[node name="Quit_Button" type="Button" parent="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 387.0
+margin_right = 384.0
+margin_bottom = 512.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Quit to Desktop"
+flat = false
+align = 1
+
+[node name="GalaxyMap_CanvasLayer" type="CanvasLayer" parent="ActiveGame" index="5"]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 18 )
+
+[node name="GalaxyMap_ColorRect" type="ColorRect" parent="ActiveGame/GalaxyMap_CanvasLayer" index="0"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = -384.0
+margin_right = 208.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.666667, 0.666667, 0.666667, 0.784314 )
+_sections_unfolded = [ "Margin", "Mouse" ]
+
+[node name="Map_ColorRect" type="ColorRect" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 400.0
+margin_bottom = 416.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 0.784314 )
+_sections_unfolded = [ "Margin" ]
+
+[node name="Icons" type="Node2D" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect" index="0"]
+
+editor/display_folded = true
+position = Vector2( 8, 8 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="GalTileSelector_Sprite" type="Sprite" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect/Icons" index="0"]
+
+texture = ExtResource( 19 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ValidJumps_TileMap" type="TileMap" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect" index="1"]
+
+mode = 0
+tile_set = ExtResource( 20 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+_sections_unfolded = [ "Cell", "Transform" ]
+
+[node name="CurrentGTile" type="Sprite" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect" index="2"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="GTMap_ColorRect" type="ColorRect" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect" index="1"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -80.0
+margin_right = 80.0
+margin_bottom = -16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Margin" ]
+
+[node name="SystemName_Label" type="Label" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect" index="2"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 96.0
+margin_top = -80.0
+margin_right = 224.0
+margin_bottom = -64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SYSTEM NAME"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin" ]
+
+[node name="LockCoords_Button" type="Button" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect" index="3"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -96.0
+margin_top = -32.0
+margin_right = 176.0
+margin_bottom = -8.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "JUMP"
+flat = false
+align = 1
+_sections_unfolded = [ "Margin" ]
+
+[node name="Galaxy" type="Node2D" parent="ActiveGame" index="6"]
+
+script = ExtResource( 21 )
+
+[node name="Utilities" type="Node" parent="." index="2"]
+
+[node name="Miscellaneous" type="Node" parent="Utilities" index="0"]
+
+script = ExtResource( 22 )
+
+[node name="MarkovNamers" type="Node" parent="Utilities" index="1"]
+
+script = ExtResource( 23 )
+
+[node name="LocationNamers" type="Node" parent="Utilities/MarkovNamers" index="0"]
+
+editor/display_folded = true
+
+[node name="EnglishLocationNamer" type="Node" parent="Utilities/MarkovNamers/LocationNamers" index="0"]
+
+script = ExtResource( 24 )
+
+[node name="CharacterNamers" type="Node" parent="Utilities/MarkovNamers" index="1"]
+
+[node name="EnglishFirstNamerM" type="Node" parent="Utilities/MarkovNamers/CharacterNamers" index="0"]
+
+script = ExtResource( 24 )
+
+[node name="EnglishFirstNamerF" type="Node" parent="Utilities/MarkovNamers/CharacterNamers" index="1"]
+
+script = ExtResource( 24 )
+
+[node name="EnglishLastNamer" type="Node" parent="Utilities/MarkovNamers/CharacterNamers" index="2"]
+
+script = ExtResource( 24 )
+
+[connection signal="pressed" from="Screens/Menu_Screens/Main_Menu/MM_Background/NewGame_Button" to="Screens/Menu_Screens/Main_Menu" method="_on_NewGame_Button_pressed"]
+
+[connection signal="pressed" from="Screens/Menu_Screens/Main_Menu/MM_Background/LoadGame_Button" to="Screens/Menu_Screens/Main_Menu" method="_on_LoadGame_Button_pressed"]
+
+[connection signal="pressed" from="Screens/Menu_Screens/Main_Menu/MM_Background/Exit_Button" to="Screens/Menu_Screens/Main_Menu" method="_on_Exit_Button_pressed"]
+
+[connection signal="pressed" from="Screens/Menu_Screens/Main_Menu/MM_Background/Test_Button" to="Screens/Menu_Screens/Main_Menu" method="_on_Test_Button_pressed"]
+
+[connection signal="pressed" from="Screens/Menu_Screens/NewGame_Menu/NG_Background/GenerateGalaxy_Button" to="Screens/Menu_Screens/NewGame_Menu" method="_on_GenerateGalaxy_Button_pressed"]
+
+[connection signal="pressed" from="Screens/Menu_Screens/LoadGame_Menu/LG_Background/LG_Button" to="Screens/Menu_Screens/LoadGame_Menu" method="_on_LG_Button_pressed"]
+
+[connection signal="pressed" from="Screens/GeneratingGalaxy_Screen/GG_Background/GG_Button" to="Screens/GeneratingGalaxy_Screen" method="_on_GG_Button_pressed"]
+
+[connection signal="pressed" from="Screens/GeneratingGalaxy_Screen/GG_Background/BeginGame_Button" to="Screens/GeneratingGalaxy_Screen" method="_on_BeginGame_Button_pressed"]
+
+[connection signal="pressed" from="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer/Button7" to="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer" method="_on_Button7_pressed"]
+
+[connection signal="pressed" from="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer/Resume_Button" to="ActiveGame/PauseMenu_CanvasLayer" method="_on_Resume_Button_pressed"]
+
+[connection signal="pressed" from="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer/Save_Button" to="ActiveGame/PauseMenu_CanvasLayer" method="_on_Save_Button_pressed"]
+
+[connection signal="pressed" from="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer/Quit_Button" to="ActiveGame/PauseMenu_CanvasLayer" method="_on_Quit_Button_pressed"]
+
+[connection signal="pressed" from="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/LockCoords_Button" to="ActiveGame/GalaxyMap_CanvasLayer" method="_on_LockCoords_Button_pressed"]
+
+

@@ -5,6 +5,7 @@ const RING_SIZE = 512
 var planetId
 var planetType
 var planetName
+var planetOwner
 
 var systemId
 var ring
@@ -16,16 +17,16 @@ var baseSurface
 func _ready():
 	pass
 
-func init(i, t, n, s, r):
+func init(i, t, n, o, s, r):
 	planetId = i
 	planetType = t
 	planetName = n
+	planetOwner = o
 	
 	systemId = s
 	ring = r
 
 func Activate(center):
-	#position = Vector2(randi()%4096, randi()%4096)
 	position = polar2cartesian((ring+3)*RING_SIZE, deg2rad(degreePosition - 90)) + center
 	$Base_Sprite.texture = load("res://Assets/Art/Planets/Planet" + baseSurface + "Base.png")
 	name = planetName
@@ -34,6 +35,7 @@ func Save(slot):
 	var saveStr = str(planetId) + "\n"
 	saveStr += planetType + "\n"
 	saveStr += planetName + "\n"
+	saveStr += planetOwner + "\n"
 	saveStr += str(systemId) + "\n"
 	saveStr += str(ring) + "\n"
 	saveStr += str(degreePosition) + "\n"
@@ -55,6 +57,7 @@ static func Load(filepath):
 	var i = int(f.get_line())
 	var t = f.get_line()
 	var n = f.get_line()
+	var o = f.get_line()
 	var s = int(f.get_line())
 	var r = int(f.get_line())
 	var d = int(f.get_line())
@@ -64,7 +67,7 @@ static func Load(filepath):
 	f.close()
 	
 	var p = Planet.new()
-	p.init(i, t, n, s, r)
+	p.init(i, t, n, o, s, r)
 	p.degreePosition = d
 	p.underground = u
 	p.baseSurface = b

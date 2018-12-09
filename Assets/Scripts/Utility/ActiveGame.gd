@@ -1,5 +1,6 @@
 extends Node2D
 
+# classes
 var GalacticTile = load("res://Assets/Scripts/Geography/GalacticTile.gd")
 var SolarSystem = load("res://Assets/Scripts/Geography/SolarSystem.gd")
 var PlanetScript = load("res://Assets/Scripts/Geography/Planet.gd")
@@ -8,20 +9,18 @@ var BackgroundStar = load("res://Assets/Scenes/Geography/BGStar.tscn")
 var Sun = load("res://Assets/Scenes/Geography/Sun.tscn")
 var PlanetScene = load("res://Assets/Scenes/Geography/Planet.tscn")
 
+# nodes
 var background_CR
-#var playerPlaceholder
 var galaxy
 var miscellaneous
+
+# temporary hardcoded things
+var jumpLimit = 3
 
 # saved things below here
 var version
 var slot
 var phase
-
-# player placeholder
-#var playerPos
-#var playerRot
-var jumpLimit = 3
 
 var galacticPos
 
@@ -57,7 +56,7 @@ func BeginPlaying():
 	
 	EnterGTile(galacticPos.x, galacticPos.y)
 	
-	get_node("Ships/Test_Ship").build()
+	get_node("Ships/Test_Ship").Build()
 	
 	$Characters/Player/MainCamera.current = true
 	
@@ -97,7 +96,7 @@ func EnterGTile(x, y):
 				#print(pId)
 				var p = PlanetScript.Load("user://SaveFiles/" + slot + "/planet" + str(pId) + ".txt")
 				var pInstance = PlanetScene.instance()
-				pInstance.init(p.planetId, p.planetType, p.planetName, p.systemId, p.ring)
+				pInstance.init(p.planetId, p.planetType, p.planetName, p.planetOwner, p.systemId, p.ring)
 				pInstance.degreePosition = p.degreePosition
 				pInstance.underground = p.underground
 				pInstance.baseSurface = p.baseSurface
@@ -111,7 +110,7 @@ func EnterGTile(x, y):
 	
 	# put player at entry point
 	
-	$FlightHUD_CanvasLayer/Terminal_ColorRect.Activate(gt, planets)
+	$FlightHUD_CanvasLayer/Terminal_ColorRect.ActivateSectorMap(gt, planets)
 
 func Save(slot):
 	var saveStr = version + "\n"
@@ -136,11 +135,6 @@ func Load(slot):
 		self.slot = gameFile.get_line()
 		phase = gameFile.get_line()
 		
-		#playerPos = gameFile.get_line()
-		#var px = playerPos.split(" ")[0]
-		#var py = playerPos.split(" ")[1]
-		#playerPos = Vector2(px, py)
-		#playerRot = float(gameFile.get_line())
 		galacticPos = gameFile.get_line()
 		var gx = galacticPos.split(" ")[0]
 		var gy = galacticPos.split(" ")[1]

@@ -14,11 +14,13 @@ func _ready():
 	engFirstF = $CharacterNamers/EnglishFirstNamerF
 	engLast = $CharacterNamers/EnglishLastNamer
 	
-	engLoc.SetProbMatrix2(engLoc.usStates + engLoc.usCounties)
+	engLoc.SetProbMatrix2(engLoc.usStates + engLoc.usCounties + engLoc.usCities + engLoc.canCities)
 	engFirstM.SetProbMatrix2(engFirstM.usMaleFirsts)
 	engFirstF.SetProbMatrix2(engFirstF.usFemaleFirsts)
 	engLast.SetProbMatrix2(engLast.usCounties)
 	
+	engLoc.minLen = 5
+	engLoc.maxLen = 10
 	engFirstM.maxLen = 8
 	engFirstF.maxLen = 10
 	engLast.maxLen = 10

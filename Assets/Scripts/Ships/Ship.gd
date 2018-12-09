@@ -1,20 +1,29 @@
 extends Node2D
 
+var Planet = preload("res://Assets/Scripts/Geography/Planet.gd")
+
 var pilot = -1
 export var sId = -1
 
 export var size = ""
-export var pieces = ""
+export var blueprint = ""  # takes a blueprint string
+
+export var inArea = false
 
 var throttle = 0
 var velocity = Vector2(0, 0)
-var maxSpeed = 300
+var maxSpeed = 500
+
+var overPlanet = ""
+var orbitingPlanet = ""
 
 func _ready():
 	pass
 
 func _process(delta):
-	HandleMovement(delta)
+	if inArea:
+		HandleMovement(delta)
+		#UpdateStatus()
 
 func HandleMovement(delta):
 	if throttle > 100:
@@ -26,8 +35,11 @@ func HandleMovement(delta):
 	velocity = polar2cartesian(speed, rotation-(PI/2))
 	translate(velocity * delta)
 
-func build():
-	for p in pieces.split(","):
+#func UpdateStatus():
+#	pass
+
+func Build():
+	for p in blueprint.split(","):
 		var splits = p.split("#")
 		p = splits[0]
 		var x = splits[1]
@@ -49,3 +61,20 @@ func build():
 				oNode.visible = false
 			else:
 				assert(false)
+
+func Orbit():
+	throttle = 0
+	velocity = Vector2(0, 0)
+	orbitingPlanet = overPlanet
+
+func LeaveOrbit():
+	orbitingPlanet = ""
+
+func _on_Orbiter_Area2D_area_entered(area):
+	if area.get_parent() is Planet:
+		var planet = area.get_parent()
+		overPlanet = planet.planetName
+
+func _on_Orbiter_Area2D_area_exited(area):
+	if area.get_parent() is Planet:
+		overPlanet = ""

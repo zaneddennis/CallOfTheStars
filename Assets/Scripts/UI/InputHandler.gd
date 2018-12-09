@@ -1,5 +1,7 @@
 extends Node2D
 
+var Ship = preload("res://Assets/Scripts/Ships/Ship.gd")
+
 var ag
 
 var player
@@ -27,30 +29,37 @@ func _process(delta):
 	
 	match ag.phase:
 		"space":
-			HandleSpaceInput()
+			if player.currentShip != null:
+				HandleSpaceInput()
 		_:
 			pass
 
-# TO CHANGE: should directly adjust attributes of Player's current ship; UI should read ship instead of this
-func HandleSpaceInputOld():
-	var throttleBar = ag.get_node("FlightHUD_CanvasLayer/Throttle_TextureProgress")
-	var pPlaceholder = ag.get_node("PlayerPlaceholder")
-	
-	if Input.is_action_pressed("throttle_up"):
-		throttleBar.value += 1
-	if Input.is_action_pressed("throttle_down"):
-		throttleBar.value -= 1
-	if Input.is_action_pressed("turn_left"):
-		pPlaceholder.rotation_degrees -= 1
-	if Input.is_action_pressed("turn_right"):
-		pPlaceholder.rotation_degrees += 1
+func HandleSpaceInput():
+	if player.currentShip.orbitingPlanet == "":
+		HandleSpaceMovement()
 	
 	if Input.is_action_just_pressed("close_window"):
 		get_parent().get_node("GalaxyMap_CanvasLayer/GalaxyMap_ColorRect").visible = false
+		
+		if player.currentShip.orbitingPlanet:
+			get_parent().get_node("Orbit_CanvasLayer/Orbit_ColorRect").visible = false
+			get_parent().get_node("FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR/Orbit_TextureProgress").value = 5
+			player.currentShip.LeaveOrbit()
+	
+	if player.currentShip != null:
+		var orbitProgress = get_parent().get_node("FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR/Orbit_TextureProgress")
+		if player.currentShip.overPlanet != "" and orbitProgress.value < 100:
+			if Input.is_action_pressed("interact"):
+				orbitProgress.value += 2
+			else:
+				orbitProgress.value = 5
+		elif orbitProgress.value == 100 and player.currentShip.orbitingPlanet == "":
+			player.currentShip.Orbit()
+			ag.get_node("Orbit_CanvasLayer").Activate()
 	
 	HandleGalaxyMapInput()
 
-func HandleSpaceInput():
+func HandleSpaceMovement():
 	if Input.is_action_pressed("throttle_up"):
 		player.currentShip.throttle += 1
 	if Input.is_action_pressed("throttle_down"):
@@ -59,11 +68,6 @@ func HandleSpaceInput():
 		player.currentShip.rotation_degrees -= 1
 	if Input.is_action_pressed("turn_right"):
 		player.currentShip.rotation_degrees += 1
-	
-	if Input.is_action_just_pressed("close_window"):
-		get_parent().get_node("GalaxyMap_CanvasLayer/GalaxyMap_ColorRect").visible = false
-	
-	HandleGalaxyMapInput()
 
 func HandleGalaxyMapInput():
 	if get_parent().get_node("GalaxyMap_CanvasLayer/GalaxyMap_ColorRect").visible == true:

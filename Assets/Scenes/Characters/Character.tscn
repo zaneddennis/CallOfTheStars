@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Scripts/Characters/Character.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/Characters/FaceTest.png" type="Texture" id=2]
 
-[node name="Character" type="Node2D"]
+[node name="Character" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 cId = -1
@@ -11,11 +11,12 @@ first = ""
 last = ""
 sex = "M"
 age = 0
-inShip = -1
 inArea = false
+inShip = -1
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+visible = false
 texture = ExtResource( 2 )
 
 

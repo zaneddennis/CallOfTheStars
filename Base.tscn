@@ -611,7 +611,7 @@ min_value = 0.0
 max_value = 100.0
 step = 1.0
 page = 0.0
-value = 25.0
+value = 0.0
 exp_edit = false
 rounded = false
 texture_under = null
@@ -679,16 +679,15 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 14 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="SectorName_Label" type="Label" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect" index="1"]
+[node name="SectorName_Label" type="Label" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 264.0
-margin_top = 4.0
-margin_right = 444.0
-margin_bottom = 28.0
+margin_left = 260.0
+margin_right = 440.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -702,6 +701,90 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
+
+[node name="Orbiting_Label" type="Label" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR" index="3"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 260.0
+margin_top = 72.0
+margin_right = 440.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "PLANETNAME"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="EnterOrbit_Label" type="Label" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR" index="4"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 260.0
+margin_top = 96.0
+margin_right = 440.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Hold E to Orbit Planet"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Orbit_TextureProgress" type="TextureProgress" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR" index="5"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 260.0
+margin_top = 128.0
+margin_right = 440.0
+margin_bottom = 152.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 5.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 10 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = true
+stretch_margin_left = 8
+stretch_margin_right = 8
+_sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="ModuleBar_HBoxContainer" type="HBoxContainer" parent="ActiveGame/FlightHUD_CanvasLayer" index="3"]
 
@@ -1326,7 +1409,6 @@ _sections_unfolded = [ "Margin" ]
 
 [node name="Orbit_CanvasLayer" type="CanvasLayer" parent="ActiveGame" index="5"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -1337,19 +1419,145 @@ script = ExtResource( 20 )
 [node name="Orbit_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer" index="0"]
 
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -236.0
+margin_right = 500.0
+margin_bottom = 236.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.666667, 0.666667, 0.666667, 0.784314 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="PlanetMap_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 80.0
+margin_right = 584.0
+margin_bottom = 464.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect" index="0"]
+
+mode = 0
+tile_set = null
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+
+[node name="TileInfo_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect" index="1"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -264.0
+margin_top = 80.0
+margin_right = -8.0
+margin_bottom = 264.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 0.784314 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="Legend_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect" index="2"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -264.0
+margin_top = 280.0
+margin_right = -8.0
+margin_bottom = 464.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 0.784314 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="PlanetName_Label" type="Label" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 520.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "PLANET NAME"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="FactionName_Label" type="Label" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 600.0
+margin_top = 16.0
+margin_right = 856.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "FACTION NAME"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
 
 [node name="Galaxy" type="Node2D" parent="ActiveGame" index="6"]
 
@@ -1361,7 +1569,9 @@ script = ExtResource( 21 )
 
 position = Vector2( 512, 512 )
 sId = 0
-pieces = "TinyHull0#0#0#1111,TinyBodyColumn_10_30#0#23#0111"
+size = "Tiny"
+blueprint = "TinyHull0#0#0#1111,TinyBodyColumn_12_28#0#22#0111,TinyWing0R_28_16#20#24#1110,TinyWing0L_28_16#-20#24#1110"
+inArea = true
 
 [node name="Characters" type="Node2D" parent="ActiveGame" index="8"]
 
@@ -1412,8 +1622,6 @@ script = ExtResource( 24 )
 script = ExtResource( 25 )
 
 [node name="LocationNamers" type="Node" parent="Utilities/MarkovNamers" index="0"]
-
-editor/display_folded = true
 
 [node name="EnglishLocationNamer" type="Node" parent="Utilities/MarkovNamers/LocationNamers" index="0"]
 

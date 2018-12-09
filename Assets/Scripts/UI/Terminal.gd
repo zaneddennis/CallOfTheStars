@@ -5,10 +5,11 @@ func _ready():
 
 func _process(delta):
 	if visible:
-		var player = get_parent().get_parent().get_node("PlayerPlaceholder")
+		#var player = get_parent().get_parent().get_node("PlayerPlaceholder")
+		var playerShip = get_parent().get_parent().get_node("Ships/Test_Ship")
 		
-		$SectorMap_CR/Player.rotation = player.rotation
-		$SectorMap_CR/Player.position = (player.position/16384) * 256
+		$SectorMap_CR/Player.rotation = playerShip.rotation
+		$SectorMap_CR/Player.position = (playerShip.position/16384) * 256
 
 func Activate(gt, planets):
 	Clear()

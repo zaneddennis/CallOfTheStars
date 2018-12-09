@@ -9,7 +9,7 @@ var Sun = load("res://Assets/Scenes/Geography/Sun.tscn")
 var PlanetScene = load("res://Assets/Scenes/Geography/Planet.tscn")
 
 var background_CR
-var playerPlaceholder
+#var playerPlaceholder
 var galaxy
 var miscellaneous
 
@@ -19,15 +19,15 @@ var slot
 var phase
 
 # player placeholder
-var playerPos
-var playerRot
+#var playerPos
+#var playerRot
 var jumpLimit = 3
 
 var galacticPos
 
 func _ready():
 	background_CR = $Background_ColorRect
-	playerPlaceholder = $PlayerPlaceholder
+	#playerPlaceholder = $PlayerPlaceholder
 	galaxy = $Galaxy
 	miscellaneous = get_parent().get_node("Utilities/Miscellaneous")
 	
@@ -43,13 +43,13 @@ func Initialize(v, s):
 	version = v
 	slot = s
 	phase = "space"
-	playerPos = Vector2(256.0, 256.0)
-	playerRot = 135
+	#playerPos = Vector2(256.0, 256.0)
+	#playerRot = 135
 	galacticPos = Vector2(0, 0)
 
 func BeginPlaying():
-	playerPlaceholder.position = playerPos
-	playerPlaceholder.rotation_degrees = playerRot
+	#playerPlaceholder.position = playerPos
+	#playerPlaceholder.rotation_degrees = playerRot
 	
 	var hud = $FlightHUD_CanvasLayer
 	for n in hud.get_children():
@@ -117,8 +117,8 @@ func Save(slot):
 	var saveStr = version + "\n"
 	saveStr += slot + "\n"
 	saveStr += phase + "\n"
-	saveStr += str(playerPos.x) + " " + str(playerPos.y) + "\n"
-	saveStr += str(playerRot) + "\n"
+	#saveStr += str(playerPos.x) + " " + str(playerPos.y) + "\n"
+	#saveStr += str(playerRot) + "\n"
 	saveStr += str(galacticPos.x) + " " + str(galacticPos.y) + "\n"
 	
 	var saveFile = File.new()
@@ -136,11 +136,11 @@ func Load(slot):
 		self.slot = gameFile.get_line()
 		phase = gameFile.get_line()
 		
-		playerPos = gameFile.get_line()
-		var px = playerPos.split(" ")[0]
-		var py = playerPos.split(" ")[1]
-		playerPos = Vector2(px, py)
-		playerRot = float(gameFile.get_line())
+		#playerPos = gameFile.get_line()
+		#var px = playerPos.split(" ")[0]
+		#var py = playerPos.split(" ")[1]
+		#playerPos = Vector2(px, py)
+		#playerRot = float(gameFile.get_line())
 		galacticPos = gameFile.get_line()
 		var gx = galacticPos.split(" ")[0]
 		var gy = galacticPos.split(" ")[1]
@@ -148,7 +148,6 @@ func Load(slot):
 		
 		print("Version = " + version)
 		$FlightHUD_CanvasLayer/Label.text += " " + version
-		print("Player at " + str(playerPos) + ", " + str(playerRot))
 		
 		galaxy.Load(slot)
 		

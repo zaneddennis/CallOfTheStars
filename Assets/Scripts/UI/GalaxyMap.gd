@@ -13,7 +13,7 @@ func _ready():
 	ag = get_parent()
 
 func _process(delta):
-	$GalaxyMap_ColorRect/Map_ColorRect/CurrentGTile.rotation = get_parent().get_node("PlayerPlaceholder").rotation
+	$GalaxyMap_ColorRect/Map_ColorRect/CurrentGTile.rotation = get_parent().get_node("Ships/Test_Ship").rotation
 
 func SelectTile(x, y):
 	selectedX = x

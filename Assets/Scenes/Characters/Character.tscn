@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Scripts/Characters/Character.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Art/Characters/FaceTest.png" type="Texture" id=2]
+
+[node name="Character" type="Node2D"]
+
+script = ExtResource( 1 )
+cId = -1
+first = ""
+last = ""
+sex = "M"
+age = 0
+inShip = -1
+inArea = false
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+

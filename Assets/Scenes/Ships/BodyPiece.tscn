@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Scripts/Ships/BodyPiece.gd" type="Script" id=1]
+
+[node name="BodyPiece" type="Node2D"]
+
+script = ExtResource( 1 )
+size = "Tiny"
+connection0S = Vector2( 0, 0 )
+connection0F = Vector2( 0, 0 )
+connection1S = Vector2( 0, 0 )
+connection1F = Vector2( 0, 0 )
+connection2S = Vector2( 0, 0 )
+connection2F = Vector2( 0, 0 )
+connection3S = Vector2( 0, 0 )
+connection3F = Vector2( 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+[node name="OutlineBase_Sprite" type="Sprite" parent="." index="1"]
+
+[node name="Outline0_Sprite" type="Sprite" parent="." index="2"]
+
+[node name="Outline1_Sprite" type="Sprite" parent="." index="3"]
+
+[node name="Outline2_Sprite" type="Sprite" parent="." index="4"]
+
+[node name="Outline3_Sprite" type="Sprite" parent="." index="5"]
+
+

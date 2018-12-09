@@ -16,8 +16,9 @@ func _ready():
 	
 	engLoc.SetProbMatrix2(engLoc.usStates + engLoc.usCounties)
 	engFirstM.SetProbMatrix2(engFirstM.usMaleFirsts)
-	#engFirstF
+	engFirstF.SetProbMatrix2(engFirstF.usFemaleFirsts)
 	engLast.SetProbMatrix2(engLast.usCounties)
 	
 	engFirstM.maxLen = 8
+	engFirstF.maxLen = 10
 	engLast.maxLen = 10

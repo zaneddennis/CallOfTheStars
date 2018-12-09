@@ -57,7 +57,10 @@ func BeginPlaying():
 	
 	EnterGTile(galacticPos.x, galacticPos.y)
 	
-	get_node("PlayerPlaceholder/Camera2D").current = true
+	get_node("Ships/Test_Ship").build()
+	
+	$Characters/Player/MainCamera.current = true
+	
 	get_tree().paused = false
 
 func EnterGTile(x, y):
@@ -154,5 +157,7 @@ func Load(slot):
 		show()
 		BeginPlaying()
 		
+		return "success"
+		
 	else:
-		print("load error")
+		return "That save does not exist"

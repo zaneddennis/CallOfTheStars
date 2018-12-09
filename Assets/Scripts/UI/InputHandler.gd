@@ -2,6 +2,8 @@ extends Node2D
 
 var ag
 
+var player
+
 var actionBarDict = {"1" : "",
 					 "2" : "",
 					 "3" : "",
@@ -17,6 +19,7 @@ var actionBarDict = {"1" : "",
 
 func _ready():
 	ag = get_parent()
+	player = ag.get_node("Characters/Player")
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
@@ -28,8 +31,8 @@ func _process(delta):
 		_:
 			pass
 
-func HandleSpaceInput():
-	#var throttleBar = ag.get_node("PlayerPlaceholder/FlightHUD/Throttle_ProgressBar")
+# TO CHANGE: should directly adjust attributes of Player's current ship; UI should read ship instead of this
+func HandleSpaceInputOld():
 	var throttleBar = ag.get_node("FlightHUD_CanvasLayer/Throttle_TextureProgress")
 	var pPlaceholder = ag.get_node("PlayerPlaceholder")
 	
@@ -41,6 +44,21 @@ func HandleSpaceInput():
 		pPlaceholder.rotation_degrees -= 1
 	if Input.is_action_pressed("turn_right"):
 		pPlaceholder.rotation_degrees += 1
+	
+	if Input.is_action_just_pressed("close_window"):
+		get_parent().get_node("GalaxyMap_CanvasLayer/GalaxyMap_ColorRect").visible = false
+	
+	HandleGalaxyMapInput()
+
+func HandleSpaceInput():
+	if Input.is_action_pressed("throttle_up"):
+		player.currentShip.throttle += 1
+	if Input.is_action_pressed("throttle_down"):
+		player.currentShip.throttle -= 1
+	if Input.is_action_pressed("turn_left"):
+		player.currentShip.rotation_degrees -= 1
+	if Input.is_action_pressed("turn_right"):
+		player.currentShip.rotation_degrees += 1
 	
 	if Input.is_action_just_pressed("close_window"):
 		get_parent().get_node("GalaxyMap_CanvasLayer/GalaxyMap_ColorRect").visible = false

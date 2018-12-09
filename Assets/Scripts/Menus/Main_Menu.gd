@@ -16,10 +16,7 @@ func _on_LoadGame_Button_pressed():
 	get_parent().get_node("LoadGame_Menu").show()
 
 func _on_Test_Button_pressed():
-	var firstNamer = get_node("/root/Base/Utilities/MarkovNamers/CharacterNamers/EnglishFirstNamerM")
+	var firstNamerM = get_node("/root/Base/Utilities/MarkovNamers/CharacterNamers/EnglishFirstNamerM")
+	var firstNamerF = get_node("/root/Base/Utilities/MarkovNamers/CharacterNamers/EnglishFirstNamerF")
 	var lastNamer = get_node("/root/Base/Utilities/MarkovNamers/CharacterNamers/EnglishLastNamer")
-	#print(firstNamer.Generate() + " " + lastNamer.Generate())
-	for i in range(100):
-		print(firstNamer.Generate() + " " + lastNamer.Generate())
-	
-	#print(float(2048) / float(16384))
+	print(firstNamerF.Generate() + " " + lastNamer.Generate())

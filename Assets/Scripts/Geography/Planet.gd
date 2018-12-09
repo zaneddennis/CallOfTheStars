@@ -28,6 +28,7 @@ func Activate(center):
 	#position = Vector2(randi()%4096, randi()%4096)
 	position = polar2cartesian((ring+3)*RING_SIZE, deg2rad(degreePosition - 90)) + center
 	$Base_Sprite.texture = load("res://Assets/Art/Planets/Planet" + baseSurface + "Base.png")
+	name = planetName
 
 func Save(slot):
 	var saveStr = str(planetId) + "\n"

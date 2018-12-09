@@ -39,4 +39,5 @@ close_window=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_na
 
 [rendering]
 
+environment/default_clear_color=Color( 0.156863, 0.156863, 0.156863, 1 )
 environment/default_environment="res://default_env.tres"

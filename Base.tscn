@@ -1409,6 +1409,7 @@ _sections_unfolded = [ "Margin" ]
 
 [node name="Orbit_CanvasLayer" type="CanvasLayer" parent="ActiveGame" index="5"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -1611,14 +1612,13 @@ editor_draw_drag_margin = false
 
 [node name="Utilities" type="Node" parent="." index="2"]
 
-editor/display_folded = true
-
 [node name="Miscellaneous" type="Node" parent="Utilities" index="0"]
 
 script = ExtResource( 24 )
 
 [node name="MarkovNamers" type="Node" parent="Utilities" index="1"]
 
+editor/display_folded = true
 script = ExtResource( 25 )
 
 [node name="LocationNamers" type="Node" parent="Utilities/MarkovNamers" index="0"]

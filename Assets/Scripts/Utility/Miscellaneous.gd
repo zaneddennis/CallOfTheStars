@@ -18,3 +18,12 @@ func RandomVector2(bounds):
 	var x = randi() % int(bounds.x)
 	var y = randi() % int(bounds.y)
 	return Vector2(x, y)
+
+# takes a 2D array "tilemap"
+func MapToStr(map):
+	var output = ""
+	for y in range(16):
+		for x in range(24):
+			output += (str(map[x][y]) + " ")
+		output += "\n"
+	return output

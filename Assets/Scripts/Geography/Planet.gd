@@ -13,6 +13,11 @@ var degreePosition
 
 var underground
 var baseSurface
+var secondarySurface
+var tertiarySurface
+
+var heightmap
+var surfacemap
 
 func _ready():
 	pass
@@ -41,6 +46,8 @@ func Save(slot):
 	saveStr += str(degreePosition) + "\n"
 	saveStr += underground + "\n"
 	saveStr += baseSurface + "\n"
+	saveStr += secondarySurface + "\n"
+	saveStr += tertiarySurface + "\n"
 	
 	
 	var saveFile = File.new()
@@ -63,6 +70,8 @@ static func Load(filepath):
 	var d = int(f.get_line())
 	var u = f.get_line()
 	var b = f.get_line()
+	var sec = f.get_line()
+	var ter = f.get_line()
 	
 	f.close()
 	
@@ -71,5 +80,7 @@ static func Load(filepath):
 	p.degreePosition = d
 	p.underground = u
 	p.baseSurface = b
+	p.secondarySurface = sec
+	p.tertiarySurface = ter
 	
 	return p

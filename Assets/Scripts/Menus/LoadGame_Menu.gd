@@ -12,7 +12,7 @@ func _on_LG_Button_pressed():
 	
 	print("Loading game from slot " + slot)
 	var message = ag.Load(slot)
-	print(message)
+	#print(message)
 	
 	if message == "success":
 		hide()

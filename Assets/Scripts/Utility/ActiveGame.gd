@@ -15,7 +15,7 @@ var galaxy
 var miscellaneous
 
 # temporary hardcoded things
-var jumpLimit = 3
+var jumpLimit = 5
 
 # saved things below here
 var version
@@ -26,7 +26,6 @@ var galacticPos
 
 func _ready():
 	background_CR = $Background_ColorRect
-	#playerPlaceholder = $PlayerPlaceholder
 	galaxy = $Galaxy
 	miscellaneous = get_parent().get_node("Utilities/Miscellaneous")
 	
@@ -42,13 +41,9 @@ func Initialize(v, s):
 	version = v
 	slot = s
 	phase = "space"
-	#playerPos = Vector2(256.0, 256.0)
-	#playerRot = 135
 	galacticPos = Vector2(0, 0)
 
 func BeginPlaying():
-	#playerPlaceholder.position = playerPos
-	#playerPlaceholder.rotation_degrees = playerRot
 	
 	var hud = $FlightHUD_CanvasLayer
 	for n in hud.get_children():
@@ -68,7 +63,7 @@ func EnterGTile(x, y):
 	
 	galacticPos = Vector2(x, y)
 	
-	var gt = GalacticTile.Load("user://SaveFiles/" + slot + "/gTile" + str(x) + "_" + str(y) + ".txt")
+	var gt = galaxy.galTiles[x][y]
 	
 	for i in range(gt.bgDensity):
 		var bgs = BackgroundStar.instance()
@@ -77,29 +72,25 @@ func EnterGTile(x, y):
 	
 	var planets = []
 	if gt.gtType == 1:
-		#print("Loading solar system " + str(gt.ssId))
-		var ss = SolarSystem.Load("user://SaveFiles/" + slot + "/ssystem" + str(gt.ssId) + ".txt")
-		#print("Sun color: " + ss.sunColor)
+		var ss = galaxy.sSystems[int(gt.ssId)]
 		
 		# instance sun
 		var sun = Sun.instance()
 		sun.position = background_CR.get_rect().size / 2
-		#sun.position = Vector2(4096, 4096)  # placeholder
 		sun.SetColor(ss.sunColor)
 		background_CR.add_child(sun)
 		
 		# instance planets
-		#var planets = []
 		for r in ss.rings:
 			if r[0] == "P":
 				var pId = r.substr(1, len(r)-1)
-				#print(pId)
-				var p = PlanetScript.Load("user://SaveFiles/" + slot + "/planet" + str(pId) + ".txt")
+				var p = galaxy.planets[int(pId)]
 				var pInstance = PlanetScene.instance()
-				pInstance.init(p.planetId, p.planetType, p.planetName, p.planetOwner, p.systemId, p.ring)
+				"""pInstance.init(p.planetId, p.planetType, p.planetName, p.planetOwner, p.systemId, p.ring)
 				pInstance.degreePosition = p.degreePosition
 				pInstance.underground = p.underground
-				pInstance.baseSurface = p.baseSurface
+				pInstance.baseSurface = p.baseSurface"""
+				pInstance.initFrom(p)
 				background_CR.add_child(pInstance)
 				pInstance.Activate(background_CR.get_rect().size / 2)
 				planets.append(pInstance)

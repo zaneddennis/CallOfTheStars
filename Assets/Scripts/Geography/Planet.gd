@@ -31,6 +31,24 @@ func init(i, t, n, o, s, r):
 	systemId = s
 	ring = r
 
+func initFrom(p):
+	planetId = p.planetId
+	planetType = p.planetType
+	planetName = p.planetName
+	planetOwner = p.planetOwner
+	
+	systemId = p.systemId
+	ring = p.ring
+	degreePosition = p.degreePosition
+	
+	underground = p.underground
+	baseSurface = p.baseSurface
+	secondarySurface = p.secondarySurface
+	tertiarySurface = p.tertiarySurface
+	
+	heightmap = p.heightmap
+	surfacemap = p.surfacemap
+
 func Activate(center):
 	position = polar2cartesian((ring+3)*RING_SIZE, deg2rad(degreePosition - 90)) + center
 	$Base_Sprite.texture = load("res://Assets/Art/Planets/Planet" + baseSurface + "Base.png")

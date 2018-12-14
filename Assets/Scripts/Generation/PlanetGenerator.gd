@@ -67,7 +67,7 @@ func GenerateSurfaceMap(heightmap, pri, sec, ter):
 			if heightmap[x][y] == 0:
 				map[x][y] = pri
 			elif heightmap[x][y] == 1:
-				if randi()%5 == 0:
+				if randi()%7 == 0:
 					map[x][y] = pri
 				else:
 					map[x][y] = sec

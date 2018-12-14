@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Art/Tilesets/PlanetaryTilesFull.png" type="Texture" id=1]
+
+[node name="PlanetaryTileset" type="Node2D"]
+
+[node name="ice_flat_full__0" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="snow_flat_full__0" type="Sprite" parent="." index="1"]
+
+position = Vector2( 30, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 24, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="greystone_flat_full__0" type="Sprite" parent="." index="2"]
+
+position = Vector2( 60, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="limestone_flat_full__0" type="Sprite" parent="." index="3"]
+
+position = Vector2( 90, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 72, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="sandstone_flat_full__0" type="Sprite" parent="." index="4"]
+
+position = Vector2( 120, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="dirt_flat_full__0" type="Sprite" parent="." index="5"]
+
+position = Vector2( 150, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 120, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="grass_flat_full__0" type="Sprite" parent="." index="6"]
+
+position = Vector2( 180, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="water_open_0" type="Sprite" parent="." index="7"]
+
+position = Vector2( 210, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 168, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="sand_flat_full__0" type="Sprite" parent="." index="8"]
+
+position = Vector2( 240, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+

@@ -40,6 +40,7 @@ _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="Menu_Screens" type="Node2D" parent="Screens" index="0"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="Main_Menu" type="Node2D" parent="Screens/Menu_Screens" index="0"]
@@ -393,12 +394,12 @@ visible = false
 
 [node name="GeneratingGalaxy_Screen" type="Node2D" parent="Screens" index="1"]
 
-editor/display_folded = true
 visible = false
 script = ExtResource( 6 )
 
 [node name="GG_Background" type="ColorRect" parent="Screens/GeneratingGalaxy_Screen" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -552,7 +553,6 @@ script = ExtResource( 8 )
 
 [node name="ActiveGame" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
 visible = false
 script = ExtResource( 9 )
 _sections_unfolded = [ "Pause" ]
@@ -1460,7 +1460,6 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="PlanetMap_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1477,10 +1476,10 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 0.784314 )
 
-[node name="TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect" index="0"]
+[node name="PlanetMap_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect" index="0"]
 
 mode = 0
-tile_set = null
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 24, 24 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )

@@ -1,5 +1,7 @@
 extends Node2D
 
+var Miscellaneous = preload("res://Assets/Scripts/Utility/Miscellaneous.gd")
+
 const RING_SIZE = 512
 
 var planetId
@@ -18,6 +20,7 @@ var tertiarySurface
 
 var heightmap
 var surfacemap
+var amap
 
 func _ready():
 	pass
@@ -48,6 +51,7 @@ func initFrom(p):
 	
 	heightmap = p.heightmap
 	surfacemap = p.surfacemap
+	amap = p.amap
 
 func Activate(center):
 	position = polar2cartesian((ring+3)*RING_SIZE, deg2rad(degreePosition - 90)) + center
@@ -67,6 +71,9 @@ func Save(slot):
 	saveStr += secondarySurface + "\n"
 	saveStr += tertiarySurface + "\n"
 	
+	saveStr += Miscellaneous.MapToStr(heightmap)
+	saveStr += Miscellaneous.MapToStr(surfacemap)
+	saveStr += Miscellaneous.MapToStr(amap)
 	
 	var saveFile = File.new()
 	saveFile.open("user://SaveFiles/" + slot + "/planet" + str(planetId) + ".txt", saveFile.WRITE)
@@ -78,6 +85,8 @@ static func Load(filepath):
 	
 	var f = File.new()
 	f.open(filepath, f.READ)
+	
+	var p = Planet.new()
 	
 	var i = int(f.get_line())
 	var t = f.get_line()
@@ -91,9 +100,38 @@ static func Load(filepath):
 	var sec = f.get_line()
 	var ter = f.get_line()
 	
+	p.heightmap = []
+	p.surfacemap = []
+	p.amap = []
+	for x in range(24):
+		p.heightmap.append([])
+		p.surfacemap.append([])
+		p.amap.append([])
+		for y in range(16):
+			p.heightmap[x].append(0)
+			p.surfacemap[x].append(0)
+			p.amap[x].append(0)
+	
+	for y in range(16):
+		var line = f.get_line()
+		var row = line.split(" ")
+		for x in range(24):
+			p.heightmap[x][y] = int(row[x])
+	
+	for y in range(16):
+		var line = f.get_line()
+		var row = line.split(" ")
+		for x in range(24):
+			p.surfacemap[x][y] = int(row[x])
+	
+	for y in range(16):
+		var line = f.get_line()
+		var row = line.split(" ")
+		for x in range(24):
+			p.amap[x][y] = int(row[x])
+	
 	f.close()
 	
-	var p = Planet.new()
 	p.init(i, t, n, o, s, r)
 	p.degreePosition = d
 	p.underground = u

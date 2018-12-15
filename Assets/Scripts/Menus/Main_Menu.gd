@@ -23,7 +23,7 @@ func _on_Test_Button_pressed():
 	var pg = PlanetGenerator.new()
 	
 	var heightmap = pg.GenerateHeightmap(6, 12, 12, 8, 4, 4)
-	var surfacemap = pg.GenerateSurfaceMap(heightmap, 7, 6, 5)
+	var surfacemap = pg.GenerateSurfaceMap(heightmap, 7, 6, 2)
 	
 	print("HEIGHTMAP")
 	print(misc.MapToStr(heightmap))

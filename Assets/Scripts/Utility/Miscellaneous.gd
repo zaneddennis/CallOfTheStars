@@ -20,7 +20,7 @@ func RandomVector2(bounds):
 	return Vector2(x, y)
 
 # takes a 2D array "tilemap"
-func MapToStr(map):
+static func MapToStr(map):
 	var output = ""
 	for y in range(16):
 		for x in range(24):

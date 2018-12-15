@@ -1,6 +1,7 @@
 extends Node
 
 var Planet = load("res://Assets/Scripts/Geography/Planet.gd")
+var PlanetaryTileset = load("res://Assets/Art/Tilesets/PlanetaryTileset.tres")
 
 var nameGen
 
@@ -37,6 +38,10 @@ func GeneratePlanet(pId, sId, ring, slot):
 	else:
 		t = 0
 	p.tertiarySurface = surfaces[t]
+	
+	p.heightmap = GenerateHeightmap(6, 12, 12, 8, 4, 4)
+	p.surfacemap = GenerateSurfaceMap(p.heightmap, surfaces.find(p.baseSurface), surfaces.find(p.secondarySurface), surfaces.find(p.tertiarySurface))
+	p.amap = GenerateAMap(p.heightmap, p.surfacemap)
 	
 	p.Save(slot)
 
@@ -82,6 +87,26 @@ func GenerateSurfaceMap(heightmap, pri, sec, ter):
 				map[x][y] = ter
 	
 	return map
+
+func GenerateAMap(hmap, smap):
+	var amap = []
+	for x in range(xLen):
+		amap.append([])
+		for y in range(yLen):
+			amap[x].append(0)
+	
+	for x in range(xLen):
+		for y in range(yLen):
+			var surface = surfaces[smap[x][y]].to_lower()
+			var tilename = ""
+			if surface == "water":
+				tilename = surface + "_open_0"
+			else:
+				tilename = surface + "_flat_full__0"
+			var tId = PlanetaryTileset.find_tile_by_name(tilename)
+			amap[x][y] = tId
+	
+	return amap
 
 func DrawBox(map, maxX, maxY):
 	

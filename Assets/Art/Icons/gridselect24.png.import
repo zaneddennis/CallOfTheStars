@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlanetaryTilesFull.png-3603a1ee2a6402018cb59d58202f8112.stex"
+path="res://.import/gridselect24.png-216c3257bb908407dc01212546a190d7.stex"
 
 [deps]
 
-source_file="res://Assets/Art/Tilesets/PlanetaryTilesFull.png"
-source_md5="0288f49135e796ca288f965f21c43646"
+source_file="res://Assets/Art/Icons/gridselect24.png"
+source_md5="d610acf033030a2b312306f6ff0a5e99"
 
-dest_files=[ "res://.import/PlanetaryTilesFull.png-3603a1ee2a6402018cb59d58202f8112.stex" ]
-dest_md5="d3f9a03c04b69704d6f65667f23be5fb"
+dest_files=[ "res://.import/gridselect24.png-216c3257bb908407dc01212546a190d7.stex" ]
+dest_md5="290df504b967854fa4da8a5c154c6709"
 
 [params]
 

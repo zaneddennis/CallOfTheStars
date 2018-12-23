@@ -17,10 +17,15 @@ var underground
 var baseSurface
 var secondarySurface
 var tertiarySurface
+var atmosphere
 
 var heightmap
 var surfacemap
 var amap
+var bordermapN
+var bordermapS
+var bordermapE
+var bordermapW
 
 func _ready():
 	pass
@@ -48,10 +53,15 @@ func initFrom(p):
 	baseSurface = p.baseSurface
 	secondarySurface = p.secondarySurface
 	tertiarySurface = p.tertiarySurface
+	atmosphere = p.atmosphere
 	
 	heightmap = p.heightmap
 	surfacemap = p.surfacemap
 	amap = p.amap
+	bordermapN = p.bordermapN
+	bordermapS = p.bordermapS
+	bordermapE = p.bordermapE
+	bordermapW = p.bordermapW
 
 func Activate(center):
 	position = polar2cartesian((ring+3)*RING_SIZE, deg2rad(degreePosition - 90)) + center
@@ -70,10 +80,15 @@ func Save(slot):
 	saveStr += baseSurface + "\n"
 	saveStr += secondarySurface + "\n"
 	saveStr += tertiarySurface + "\n"
+	saveStr += atmosphere + "\n"
 	
 	saveStr += Miscellaneous.MapToStr(heightmap)
 	saveStr += Miscellaneous.MapToStr(surfacemap)
 	saveStr += Miscellaneous.MapToStr(amap)
+	saveStr += Miscellaneous.MapToStr(bordermapN)
+	saveStr += Miscellaneous.MapToStr(bordermapS)
+	saveStr += Miscellaneous.MapToStr(bordermapE)
+	saveStr += Miscellaneous.MapToStr(bordermapW)
 	
 	var saveFile = File.new()
 	saveFile.open("user://SaveFiles/" + slot + "/planet" + str(planetId) + ".txt", saveFile.WRITE)
@@ -99,18 +114,31 @@ static func Load(filepath):
 	var b = f.get_line()
 	var sec = f.get_line()
 	var ter = f.get_line()
+	var atmo = f.get_line()
 	
 	p.heightmap = []
 	p.surfacemap = []
 	p.amap = []
+	p.bordermapN = []
+	p.bordermapS = []
+	p.bordermapE = []
+	p.bordermapW = []
 	for x in range(24):
 		p.heightmap.append([])
 		p.surfacemap.append([])
 		p.amap.append([])
+		p.bordermapN.append([])
+		p.bordermapS.append([])
+		p.bordermapE.append([])
+		p.bordermapW.append([])
 		for y in range(16):
-			p.heightmap[x].append(0)
-			p.surfacemap[x].append(0)
-			p.amap[x].append(0)
+			p.heightmap[x].append(-1)
+			p.surfacemap[x].append(-1)
+			p.amap[x].append(-1)
+			p.bordermapN[x].append(-1)
+			p.bordermapS[x].append(-1)
+			p.bordermapE[x].append(-1)
+			p.bordermapW[x].append(-1)
 	
 	for y in range(16):
 		var line = f.get_line()
@@ -130,6 +158,30 @@ static func Load(filepath):
 		for x in range(24):
 			p.amap[x][y] = int(row[x])
 	
+	for y in range(16):
+		var line = f.get_line()
+		var row = line.split(" ")
+		for x in range(24):
+			p.bordermapN[x][y] = int(row[x])
+	
+	for y in range(16):
+		var line = f.get_line()
+		var row = line.split(" ")
+		for x in range(24):
+			p.bordermapS[x][y] = int(row[x])
+	
+	for y in range(16):
+		var line = f.get_line()
+		var row = line.split(" ")
+		for x in range(24):
+			p.bordermapE[x][y] = int(row[x])
+	
+	for y in range(16):
+		var line = f.get_line()
+		var row = line.split(" ")
+		for x in range(24):
+			p.bordermapW[x][y] = int(row[x])
+	
 	f.close()
 	
 	p.init(i, t, n, o, s, r)
@@ -138,5 +190,6 @@ static func Load(filepath):
 	p.baseSurface = b
 	p.secondarySurface = sec
 	p.tertiarySurface = ter
+	p.atmosphere = atmo
 	
 	return p

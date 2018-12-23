@@ -2,6 +2,7 @@ extends Node
 
 var Planet = load("res://Assets/Scripts/Geography/Planet.gd")
 var PlanetaryTileset = load("res://Assets/Art/Tilesets/PlanetaryTileset.tres")
+var BordersTileset = load("res://Assets/Art/Tilesets/PlanetaryBorderTileset.tres")
 
 var nameGen
 
@@ -10,6 +11,8 @@ var yLen = 16
 
 var undergrounds = ["Greystone", "Limestone", "Clay", "Dirt"]
 var surfaces = ["Ice", "Snow", "Greystone", "Limestone", "Sandstone", "Dirt", "Grass", "Water", "Grass", "Water", "Sand"]
+var heights = ["Flat", "Flat", "Hills", "Mountains"]
+var atmospheres = ["None", "Nonbreathable", "Breathable"]
 
 func _ready():
 	nameGen = get_node("/root/Base/Utilities/MarkovNamers/LocationNamers/EnglishLocationNamer")
@@ -39,9 +42,18 @@ func GeneratePlanet(pId, sId, ring, slot):
 		t = 0
 	p.tertiarySurface = surfaces[t]
 	
+	p.atmosphere = atmospheres[randi()%len(atmospheres)]
+	for s in ["Water", "Grass"]:
+		if s in [p.baseSurface, p.secondarySurface, p.tertiarySurface]:
+			p.atmosphere = "Breathable"
+	
 	p.heightmap = GenerateHeightmap(6, 12, 12, 8, 4, 4)
 	p.surfacemap = GenerateSurfaceMap(p.heightmap, surfaces.find(p.baseSurface), surfaces.find(p.secondarySurface), surfaces.find(p.tertiarySurface))
 	p.amap = GenerateAMap(p.heightmap, p.surfacemap)
+	p.bordermapN = GenerateBorderMapN(p.surfacemap)
+	p.bordermapS = GenerateBorderMapS(p.surfacemap)
+	p.bordermapE = GenerateBorderMapE(p.surfacemap)
+	p.bordermapW = GenerateBorderMapW(p.surfacemap)
 	
 	p.Save(slot)
 
@@ -100,13 +112,82 @@ func GenerateAMap(hmap, smap):
 			var surface = surfaces[smap[x][y]].to_lower()
 			var tilename = ""
 			if surface == "water":
-				tilename = surface + "_open_0"
+				tilename = surface + "_ocean_0"
 			else:
-				tilename = surface + "_flat_full__0"
+				if hmap[x][y] <= 1:
+					tilename = surface + "_flat_0"
+				elif hmap[x][y] == 2:
+					tilename = surface + "_hills_0"
+				else:
+					tilename = surface + "_mountain_0"
 			var tId = PlanetaryTileset.find_tile_by_name(tilename)
 			amap[x][y] = tId
 	
 	return amap
+
+func GenerateBorderMapN(smap):
+	var borderMap = []
+	for x in range(xLen):
+		borderMap.append([])
+		for y in range(yLen):
+			borderMap[x].append(-1)
+	
+	for x in range(xLen):
+		for y in range(1, yLen):
+			var surface = surfaces[smap[x][y-1]].to_lower()
+			var tilename = surface + "_0"
+			var tId = BordersTileset.find_tile_by_name(tilename)
+			borderMap[x][y] = tId
+	
+	return borderMap
+
+func GenerateBorderMapS(smap):
+	var borderMap = []
+	for x in range(xLen):
+		borderMap.append([])
+		for y in range(yLen):
+			borderMap[x].append(-1)
+	
+	for x in range(xLen):
+		for y in range(yLen-1):
+			var surface = surfaces[smap[x][y+1]].to_lower()
+			var tilename = surface + "_0"
+			var tId = BordersTileset.find_tile_by_name(tilename)
+			borderMap[x][y] = tId
+	
+	return borderMap
+
+func GenerateBorderMapE(smap):
+	var borderMap = []
+	for x in range(xLen):
+		borderMap.append([])
+		for y in range(yLen):
+			borderMap[x].append(-1)
+	
+	for x in range(xLen-1):
+		for y in range(yLen):
+			var surface = surfaces[smap[x+1][y]].to_lower()
+			var tilename = surface + "_0"
+			var tId = BordersTileset.find_tile_by_name(tilename)
+			borderMap[x][y] = tId
+	
+	return borderMap
+
+func GenerateBorderMapW(smap):
+	var borderMap = []
+	for x in range(xLen):
+		borderMap.append([])
+		for y in range(yLen):
+			borderMap[x].append(-1)
+	
+	for x in range(1, xLen):
+		for y in range(yLen):
+			var surface = surfaces[smap[x-1][y]].to_lower()
+			var tilename = surface + "_0"
+			var tId = BordersTileset.find_tile_by_name(tilename)
+			borderMap[x][y] = tId
+	
+	return borderMap
 
 func DrawBox(map, maxX, maxY):
 	

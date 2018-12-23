@@ -58,6 +58,7 @@ func HandleSpaceInput():
 			ag.get_node("Orbit_CanvasLayer").Activate()
 	
 	HandleGalaxyMapInput()
+	HandleOrbitScreenInput()
 
 func HandleSpaceMovement():
 	if Input.is_action_pressed("throttle_up"):
@@ -71,13 +72,10 @@ func HandleSpaceMovement():
 
 func HandleGalaxyMapInput():
 	if get_parent().get_node("GalaxyMap_CanvasLayer/GalaxyMap_ColorRect").visible == true:
-		if Input.is_action_just_pressed("map_select"):
+		if Input.is_action_just_pressed("click"):
 			var mCR = get_parent().get_node("GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect")
-			
-			#var selector = mCR.get_node("Icons/GalTileSelector_Sprite")
 			var mPos = get_viewport().get_mouse_position()
 			var mapRect = mCR.get_global_rect()
-	
 			
 			if mapRect.has_point(mPos):
 				var mRelPos = mPos - mapRect.position
@@ -87,6 +85,19 @@ func HandleGalaxyMapInput():
 				
 			else:
 				pass
+
+func HandleOrbitScreenInput():
+	if get_parent().get_node("Orbit_CanvasLayer/Orbit_ColorRect").visible == true:
+		if Input.is_action_just_pressed("click"):
+			var mCR = get_parent().get_node("Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect")
+			var mPos = get_viewport().get_mouse_position()
+			var mapRect = mCR.get_global_rect()
+			
+			if mapRect.has_point(mPos):
+				var mRelPos = mPos - mapRect.position
+				var x = int(mRelPos.x) / 24
+				var y = int(mRelPos.y) / 24
+				get_parent().get_node("Orbit_CanvasLayer").SelectTile(x, y)
 
 func PauseGame():
 	get_tree().paused = true

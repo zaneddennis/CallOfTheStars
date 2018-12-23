@@ -4,14 +4,30 @@
 
 [node name="PlanetaryTileset" type="Node2D"]
 
-[node name="ice_flat_full__0" type="Sprite" parent="." index="0"]
+[node name="ice_flat_0" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
-[node name="snow_flat_full__0" type="Sprite" parent="." index="1"]
+[node name="ice_hills_0" type="Sprite" parent="." index="1"]
+
+position = Vector2( 0, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 24, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="ice_mountain_0" type="Sprite" parent="." index="2"]
+
+position = Vector2( 0, 60 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="snow_flat_0" type="Sprite" parent="." index="3"]
 
 position = Vector2( 30, 0 )
 texture = ExtResource( 1 )
@@ -19,7 +35,23 @@ region_enabled = true
 region_rect = Rect2( 24, 0, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
-[node name="greystone_flat_full__0" type="Sprite" parent="." index="2"]
+[node name="snow_hills_0" type="Sprite" parent="." index="4"]
+
+position = Vector2( 30, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 24, 24, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="snow_mountain_0" type="Sprite" parent="." index="5"]
+
+position = Vector2( 30, 60 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 24, 48, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="greystone_flat_0" type="Sprite" parent="." index="6"]
 
 position = Vector2( 60, 0 )
 texture = ExtResource( 1 )
@@ -27,7 +59,23 @@ region_enabled = true
 region_rect = Rect2( 48, 0, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
-[node name="limestone_flat_full__0" type="Sprite" parent="." index="3"]
+[node name="greystone_hills_0" type="Sprite" parent="." index="7"]
+
+position = Vector2( 60, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 24, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="greystone_mountain_0" type="Sprite" parent="." index="8"]
+
+position = Vector2( 60, 60 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 48, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="limestone_flat_0" type="Sprite" parent="." index="9"]
 
 position = Vector2( 90, 0 )
 texture = ExtResource( 1 )
@@ -35,7 +83,23 @@ region_enabled = true
 region_rect = Rect2( 72, 0, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
-[node name="sandstone_flat_full__0" type="Sprite" parent="." index="4"]
+[node name="limestone_hills_0" type="Sprite" parent="." index="10"]
+
+position = Vector2( 90, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 72, 24, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="limestone_mountain_0" type="Sprite" parent="." index="11"]
+
+position = Vector2( 90, 60 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 72, 48, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="sandstone_flat_0" type="Sprite" parent="." index="12"]
 
 position = Vector2( 120, 0 )
 texture = ExtResource( 1 )
@@ -43,7 +107,23 @@ region_enabled = true
 region_rect = Rect2( 96, 0, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
-[node name="dirt_flat_full__0" type="Sprite" parent="." index="5"]
+[node name="sandstone_hills_0" type="Sprite" parent="." index="13"]
+
+position = Vector2( 120, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 24, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="sandstone_mountain_0" type="Sprite" parent="." index="14"]
+
+position = Vector2( 120, 60 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 48, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="dirt_flat_0" type="Sprite" parent="." index="15"]
 
 position = Vector2( 150, 0 )
 texture = ExtResource( 1 )
@@ -51,7 +131,23 @@ region_enabled = true
 region_rect = Rect2( 120, 0, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
-[node name="grass_flat_full__0" type="Sprite" parent="." index="6"]
+[node name="dirt_hills_0" type="Sprite" parent="." index="16"]
+
+position = Vector2( 150, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 120, 24, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="dirt_mountain_0" type="Sprite" parent="." index="17"]
+
+position = Vector2( 150, 60 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 120, 48, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="grass_flat_0" type="Sprite" parent="." index="18"]
 
 position = Vector2( 180, 0 )
 texture = ExtResource( 1 )
@@ -59,7 +155,23 @@ region_enabled = true
 region_rect = Rect2( 144, 0, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
-[node name="water_open_0" type="Sprite" parent="." index="7"]
+[node name="grass_hills_0" type="Sprite" parent="." index="19"]
+
+position = Vector2( 180, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 24, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="grass_mountain_0" type="Sprite" parent="." index="20"]
+
+position = Vector2( 180, 60 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 48, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="water_ocean_0" type="Sprite" parent="." index="21"]
 
 position = Vector2( 210, 0 )
 texture = ExtResource( 1 )
@@ -67,12 +179,20 @@ region_enabled = true
 region_rect = Rect2( 168, 0, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
-[node name="sand_flat_full__0" type="Sprite" parent="." index="8"]
+[node name="sand_flat_0" type="Sprite" parent="." index="22"]
 
 position = Vector2( 240, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 192, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="sand_hills_0" type="Sprite" parent="." index="23"]
+
+position = Vector2( 240, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 24, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
 

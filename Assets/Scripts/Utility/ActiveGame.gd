@@ -86,10 +86,6 @@ func EnterGTile(x, y):
 				var pId = r.substr(1, len(r)-1)
 				var p = galaxy.planets[int(pId)]
 				var pInstance = PlanetScene.instance()
-				"""pInstance.init(p.planetId, p.planetType, p.planetName, p.planetOwner, p.systemId, p.ring)
-				pInstance.degreePosition = p.degreePosition
-				pInstance.underground = p.underground
-				pInstance.baseSurface = p.baseSurface"""
 				pInstance.initFrom(p)
 				background_CR.add_child(pInstance)
 				pInstance.Activate(background_CR.get_rect().size / 2)
@@ -102,6 +98,9 @@ func EnterGTile(x, y):
 	# put player at entry point
 	
 	$FlightHUD_CanvasLayer/Terminal_ColorRect.ActivateSectorMap(gt, planets)
+
+func EnterPTile(p, x, y):
+	pass
 
 func Save(slot):
 	var saveStr = version + "\n"

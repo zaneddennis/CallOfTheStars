@@ -51,6 +51,25 @@ func Activate():
 	for n in get_children():
 		n.visible = true
 	
+	$Orbit_ColorRect/PlanetInfo_ColorRect/Atmosphere_Label.text = "Atmosphere: " + currentPlanet.atmosphere
+	
+	var resourceTuples = []
+	for res in currentPlanet.resources:
+		resourceTuples.append([res, currentPlanet.resources[res]])
+	resourceTuples.sort_custom(ResourceSorter, "sort")
+	print(resourceTuples)
+	
+	for i in range(1, 4):
+		var label = get_node("Orbit_ColorRect/PlanetInfo_ColorRect/Resource_Label" + str(i))
+		var tp = get_node("Orbit_ColorRect/PlanetInfo_ColorRect/VBoxContainer_Bars/TextureProgress" + str(i))
+		
+		var name = resourceTuples[i-1][0]
+		if "_" in name:
+			name = name.split("_")[0]
+		
+		label.text = name
+		tp.value = resourceTuples[i-1][1] * 100
+	
 	SelectTile(0, 0)
 
 func SelectTile(x, y):
@@ -66,5 +85,9 @@ func SelectTile(x, y):
 		if height > 3:
 			height = 3
 		$Orbit_ColorRect/TileInfo_ColorRect/Terrain_Label.text += ", " + pg.heights[height]
-	
-	$Orbit_ColorRect/PlanetInfo_ColorRect/Atmosphere_Label.text = "Atmosphere: " + currentPlanet.atmosphere
+
+class ResourceSorter:
+	static func sort(a, b):
+		if a[1] > b[1]:
+			return true
+		return false

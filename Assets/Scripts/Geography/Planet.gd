@@ -27,6 +27,8 @@ var bordermapS
 var bordermapE
 var bordermapW
 
+var resources = {}  # planet base rate
+
 func _ready():
 	pass
 
@@ -54,6 +56,7 @@ func initFrom(p):
 	secondarySurface = p.secondarySurface
 	tertiarySurface = p.tertiarySurface
 	atmosphere = p.atmosphere
+	resources = p.resources
 	
 	heightmap = p.heightmap
 	surfacemap = p.surfacemap
@@ -81,6 +84,12 @@ func Save(slot):
 	saveStr += secondarySurface + "\n"
 	saveStr += tertiarySurface + "\n"
 	saveStr += atmosphere + "\n"
+	
+	var line = ""
+	for r in resources:
+		line +=  r + "|" + str(resources[r])  + " "
+	line = line.substr(0, len(line)-1)
+	saveStr += line + "\n"
 	
 	saveStr += Miscellaneous.MapToStr(heightmap)
 	saveStr += Miscellaneous.MapToStr(surfacemap)
@@ -115,6 +124,12 @@ static func Load(filepath):
 	var sec = f.get_line()
 	var ter = f.get_line()
 	var atmo = f.get_line()
+	
+	var res = f.get_line()
+	for kv in res.split(" "):
+		var rName = kv.split("|")[0]
+		var rValue = kv.split("|")[1]
+		p.resources[rName] = float(rValue)
 	
 	p.heightmap = []
 	p.surfacemap = []

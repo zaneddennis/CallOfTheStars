@@ -1,10 +1,13 @@
 extends Node2D
 
-var Miscellaneous = preload("res://Assets/Scripts/Utility/Miscellaneous.gd")
+
 var misc
+var rand
+
 
 func _ready():
-	misc = Miscellaneous.new()
+	misc = get_tree().root.get_node("Base/Utilities/Miscellaneous")
+	rand = get_tree().root.get_node("Base/Utilities/Random")
 
 
 func _on_NewGame_Button_pressed():
@@ -20,4 +23,3 @@ func _on_LoadGame_Button_pressed():
 
 func _on_Test_Button_pressed():
 	pass
-	

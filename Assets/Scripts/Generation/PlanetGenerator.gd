@@ -5,6 +5,7 @@ var PlanetaryTileset = load("res://Assets/Art/Tilesets/PlanetaryTileset.tres")
 var BordersTileset = load("res://Assets/Art/Tilesets/PlanetaryBorderTileset.tres")
 
 var nameGen
+var rand
 
 var xLen = 24
 var yLen = 16
@@ -14,8 +15,14 @@ var surfaces = ["Ice", "Snow", "Greystone", "Limestone", "Sandstone", "Dirt", "G
 var heights = ["Flat", "Flat", "Hills", "Mountains"]
 var atmospheres = ["None", "Nonbreathable", "Breathable"]
 
+var resources = {"Aluminum_Ore": 0.35, "Chromite": 0.2, "Coal": 0.6, "Copper_Ore": 0.4, "Gold_Ore": 0.2, "Granite": 0.3,
+				 "Gypsum_Ore": 0.4, "Iron_Ore": 0.75, "Lead_Ore": 0.4, "Lithium_Ore": 0.2, "Manganese_Ore": 0.25,
+				 "Nickel_Ore": 0.25, "Plutonium_Ore": 0.2, "Silicon_Ore": 0.35, "Silver_Ore": 0.25, "Sulfur_Ore": 0.5, "Tin_Ore": 0.35,
+				 "Titanium_Ore": 0.3, "Tungsten_Ore": 0.3, "Uranium_Ore": 0.3, "Zinc_Ore": 0.35} # global base rates
+
 func _ready():
 	nameGen = get_node("/root/Base/Utilities/MarkovNamers/LocationNamers/EnglishLocationNamer")
+	rand = get_node("/root/Base/Utilities/Random")
 
 func GeneratePlanet(pId, sId, ring, slot):
 	
@@ -46,6 +53,10 @@ func GeneratePlanet(pId, sId, ring, slot):
 	for s in ["Water", "Grass"]:
 		if s in [p.baseSurface, p.secondarySurface, p.tertiarySurface]:
 			p.atmosphere = "Breathable"
+	
+	for res in resources:  # todo: make Oil and Wood (separate rule-based system)
+		if randf() < resources[res]:
+			p.resources[res] = rand.IrwinHall(resources[res], 0.16, 0.01, 0.99)
 	
 	p.heightmap = GenerateHeightmap(6, 12, 12, 8, 4, 4)
 	p.surfacemap = GenerateSurfaceMap(p.heightmap, surfaces.find(p.baseSurface), surfaces.find(p.secondarySurface), surfaces.find(p.tertiarySurface))

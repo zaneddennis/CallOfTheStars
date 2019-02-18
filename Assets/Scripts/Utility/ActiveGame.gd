@@ -30,9 +30,9 @@ func _ready():
 	miscellaneous = get_parent().get_node("Utilities/Miscellaneous")
 	
 	randomize()
-	for s in get_node("Background_ColorRect").get_children():
+	"""for s in get_node("Background_ColorRect").get_children():
 		s.position.x = rand_range(0.0, background_CR.rect_size.x)
-		s.position.y = rand_range(0.0, background_CR.rect_size.y)
+		s.position.y = rand_range(0.0, background_CR.rect_size.y)"""
 
 func _process(delta):
 	pass
@@ -58,17 +58,19 @@ func BeginPlaying():
 	get_tree().paused = false
 
 func EnterGTile(x, y):
-	for n in background_CR.get_children():
+	# remove previous solar system
+	for n in background_CR.get_node("Stars").get_children() + background_CR.get_node("Planets").get_children():
 		n.queue_free()
 	
 	galacticPos = Vector2(x, y)
 	
+	# instance everything in new solar system
 	var gt = galaxy.galTiles[x][y]
-	
 	for i in range(gt.bgDensity):
 		var bgs = BackgroundStar.instance()
 		bgs.position = miscellaneous.RandomVector2(background_CR.get_rect().size)
-		background_CR.add_child(bgs)
+		background_CR.get_node("Stars").add_child(bgs)
+		#bgs.position = Vector2(256, 256)
 	
 	var planets = []
 	if gt.gtType == 1:
@@ -78,7 +80,7 @@ func EnterGTile(x, y):
 		var sun = Sun.instance()
 		sun.position = background_CR.get_rect().size / 2
 		sun.SetColor(ss.sunColor)
-		background_CR.add_child(sun)
+		background_CR.get_node("Stars").add_child(sun)
 		
 		# instance planets
 		for r in ss.rings:
@@ -87,7 +89,7 @@ func EnterGTile(x, y):
 				var p = galaxy.planets[int(pId)]
 				var pInstance = PlanetScene.instance()
 				pInstance.initFrom(p)
-				background_CR.add_child(pInstance)
+				background_CR.get_node("Planets").add_child(pInstance)
 				pInstance.Activate(background_CR.get_rect().size / 2)
 				planets.append(pInstance)
 		

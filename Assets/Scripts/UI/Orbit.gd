@@ -18,7 +18,7 @@ func _ready():
 	pg = PlanetGenerator.new()
 
 func Activate():
-	currentPlanet = ag.get_node("Background_ColorRect/" + player.currentShip.orbitingPlanet)
+	currentPlanet = ag.get_node("Background_ColorRect/Planets/" + player.currentShip.orbitingPlanet)
 	
 	$Orbit_ColorRect/PlanetName_Label.text = currentPlanet.planetName
 	$Orbit_ColorRect/FactionName_Label.text = currentPlanet.planetOwner
@@ -59,7 +59,7 @@ func Activate():
 	resourceTuples.sort_custom(ResourceSorter, "sort")
 	print(resourceTuples)
 	
-	for i in range(1, 4):
+	for i in range(1, 6):
 		var label = get_node("Orbit_ColorRect/PlanetInfo_ColorRect/Resource_Label" + str(i))
 		var tp = get_node("Orbit_ColorRect/PlanetInfo_ColorRect/VBoxContainer_Bars/TextureProgress" + str(i))
 		
@@ -85,6 +85,8 @@ func SelectTile(x, y):
 		if height > 3:
 			height = 3
 		$Orbit_ColorRect/TileInfo_ColorRect/Terrain_Label.text += ", " + pg.heights[height]
+
+
 
 class ResourceSorter:
 	static func sort(a, b):

@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/RoundedRectWhite.png-44dad10d994dc6a80346658e390fbd6b.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Textures/RoundedRectWhite.png"
-source_md5="fb22544b242ff47b1212db49c2c22b68"
-
 dest_files=[ "res://.import/RoundedRectWhite.png-44dad10d994dc6a80346658e390fbd6b.stex" ]
-dest_md5="6bcf32844a7e546f5d013540af2fe53f"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

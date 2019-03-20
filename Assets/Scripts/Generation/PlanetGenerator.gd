@@ -1,7 +1,9 @@
 extends Node
 
 var Planet = load("res://Assets/Scripts/Geography/Planet.gd")
+
 var PlanetaryTileset = load("res://Assets/Art/Tilesets/PlanetaryTileset.tres")
+var PlanetaryBTileset = load("res://Assets/Art/Tilesets/PlanetaryBTiles.tres")
 var BordersTileset = load("res://Assets/Art/Tilesets/PlanetaryBorderTileset.tres")
 
 var nameGen
@@ -12,6 +14,7 @@ var yLen = 16
 
 var undergrounds = ["Greystone", "Limestone", "Clay", "Dirt"]
 var surfaces = ["Ice", "Snow", "Greystone", "Limestone", "Sandstone", "Dirt", "Grass", "Water", "Grass", "Water", "Sand"]
+var bSurfaces = ["Forest", "River", "Lake"]
 var heights = ["Flat", "Flat", "Hills", "Mountains"]
 var atmospheres = ["None", "Nonbreathable", "Breathable"]
 
@@ -25,6 +28,7 @@ func _ready():
 	rand = get_node("/root/Base/Utilities/Random")
 
 func GeneratePlanet(pId, sId, ring, slot):
+	print("Generating Planet " + str(pId))
 	
 	var p = Planet.new()
 	p.init(pId, "planet", nameGen.Generate(), "Unsettled", sId, ring)
@@ -61,10 +65,14 @@ func GeneratePlanet(pId, sId, ring, slot):
 	p.heightmap = GenerateHeightmap(6, 12, 12, 8, 4, 4)
 	p.surfacemap = GenerateSurfaceMap(p.heightmap, surfaces.find(p.baseSurface), surfaces.find(p.secondarySurface), surfaces.find(p.tertiarySurface))
 	p.amap = GenerateAMap(p.heightmap, p.surfacemap)
+	p.bmap = GenerateBMap(p.heightmap, p.surfacemap, p.baseSurface, p.secondarySurface, p.tertiarySurface, p.atmosphere)
 	p.bordermapN = GenerateBorderMapN(p.surfacemap)
 	p.bordermapS = GenerateBorderMapS(p.surfacemap)
 	p.bordermapE = GenerateBorderMapE(p.surfacemap)
 	p.bordermapW = GenerateBorderMapW(p.surfacemap)
+	
+	#p.tiles = GeneratePlanetaryTiles(p.heightmap, p.surfacemap)
+	p.tiles = GeneratePlanetaryTiles(pId)
 	
 	p.Save(slot)
 
@@ -135,6 +143,50 @@ func GenerateAMap(hmap, smap):
 			amap[x][y] = tId
 	
 	return amap
+
+func GenerateBMap(hmap, smap, b, s, t, atmo):
+	var hasWater = false
+	if "Water" in [b, s, t]:
+		hasWater = true
+	
+	# make empty map
+	var bmap = []
+	for x in range(xLen):
+		bmap.append([])
+		for y in range(yLen):
+			bmap[x].append(-1)
+	
+	# place forest seeds
+	var forests = []
+	if atmo == "Breathable":
+		for i in range(randi()%6):
+			var x = randi()%24
+			var y = randi()%16
+			if surfaces[smap[x][y]] != "Water":
+				bmap[x][y] = PlanetaryBTileset.find_tile_by_name("Forest")
+				forests.append(Vector2(x, y))
+	
+	# grow forest seeds
+	if not forests.empty():
+		for i in range(randi()%100):
+			var curr = forests[randi()%len(forests)]
+			var nextX = clamp(curr.x + (-1 + randi()%3), 0, 23)
+			var nextY = clamp(curr.y + (-1 + randi()%3), 0, 15)
+			if surfaces[smap[nextX][nextY]] != "Water":
+				bmap[nextX][nextY] = PlanetaryBTileset.find_tile_by_name("Forest")
+				forests.append(Vector2(nextX, nextY))
+	
+	# place lakes
+	if hasWater:
+		for x in range(xLen):
+			for y in range(yLen):
+				if surfaces[smap[x][y]] != "Water":
+					if randi()%100 == 0:
+						bmap[x][y] = PlanetaryBTileset.find_tile_by_name("Lake")
+	
+	# place rivers???
+	
+	return bmap
 
 func GenerateBorderMapN(smap):
 	var borderMap = []
@@ -218,3 +270,38 @@ func DrawBox(map, maxX, maxY):
 			map[x][y] += 1
 	
 	return map
+
+func GeneratePlanetaryTiles(pId):
+	var tiles = []
+	var ptId = 384 * pId
+	for x in range(24):
+		tiles.append([])
+		for y in range(16):
+			tiles[x].append(ptId)
+			# GeneratePlanetaryTile(ptId, pId, s, h)
+			ptId += 1
+	
+	return tiles
+
+"""func GeneratePlanetaryTiles(hmap, smap):
+	var tiles = []
+	for x in range(24):
+		tiles.append([])
+		for y in range(16):
+			#print("Generating PT " + str(x) + " " + str(y))
+			tiles[x].append(GeneratePlanetaryTile(hmap[x][y], smap[x][y]))
+	
+	return tiles
+
+func GeneratePlanetaryTile(s, h):
+	var hmap = []
+	var smap = []
+	
+	for x in range(128):
+		hmap.append([])
+		smap.append([])
+		for y in range(128):
+			hmap[x].append(h)
+			smap[x].append(0)
+	
+	return PlanetaryTile.new(s, h, hmap, smap)"""

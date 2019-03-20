@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Art/Tilesets/PlanetaryBTiles.png" type="Texture" id=1]
+
+[node name="PlanetaryBTiles" type="Node2D"]
+
+[node name="Forest" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="River" type="Sprite" parent="." index="1"]
+
+position = Vector2( 30, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 24, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Lake" type="Sprite" parent="." index="2"]
+
+position = Vector2( 60, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+

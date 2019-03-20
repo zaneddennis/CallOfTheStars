@@ -28,6 +28,11 @@ func Activate():
 		for y in range(16):
 			tm.set_cell(x, y, currentPlanet.amap[x][y])
 	
+	tm = $Orbit_ColorRect/PlanetMap_ColorRect/PlanetBTiles_TileMap
+	for x in range(24):
+		for y in range(16):
+			tm.set_cell(x, y, currentPlanet.bmap[x][y])
+	
 	tm = $Orbit_ColorRect/PlanetMap_ColorRect/BorderN_TileMap
 	for x in range(24):
 		for y in range(16):
@@ -57,18 +62,25 @@ func Activate():
 	for res in currentPlanet.resources:
 		resourceTuples.append([res, currentPlanet.resources[res]])
 	resourceTuples.sort_custom(ResourceSorter, "sort")
-	print(resourceTuples)
+	
+	print(currentPlanet.planetName + ": " + str(currentPlanet.planetId))
+	#print(currentPlanet.tiles)
+	#print(resourceTuples)
 	
 	for i in range(1, 6):
 		var label = get_node("Orbit_ColorRect/PlanetInfo_ColorRect/Resource_Label" + str(i))
 		var tp = get_node("Orbit_ColorRect/PlanetInfo_ColorRect/VBoxContainer_Bars/TextureProgress" + str(i))
 		
-		var name = resourceTuples[i-1][0]
-		if "_" in name:
-			name = name.split("_")[0]
-		
-		label.text = name
-		tp.value = resourceTuples[i-1][1] * 100
+		if i <= len(resourceTuples):
+			var name = resourceTuples[i-1][0]
+			if "_" in name:
+				name = name.split("_")[0]
+			
+			label.text = name
+			tp.value = resourceTuples[i-1][1] * 100
+		else:
+			label.text = ""
+			tp.value = 0
 	
 	SelectTile(0, 0)
 
@@ -85,7 +97,10 @@ func SelectTile(x, y):
 		if height > 3:
 			height = 3
 		$Orbit_ColorRect/TileInfo_ColorRect/Terrain_Label.text += ", " + pg.heights[height]
-
+		
+		if currentPlanet.bmap[x][y] >= 0:
+			var bSurfaceIx = currentPlanet.bmap[x][y]
+			$Orbit_ColorRect/TileInfo_ColorRect/Terrain_Label.text += ", " + pg.bSurfaces[bSurfaceIx]
 
 
 class ResourceSorter:

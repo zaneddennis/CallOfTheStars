@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/SolarSystem.png-2a67c63d8613f3c26114d345112aee86.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Icons/GalaxyMap/SolarSystem.png"
-source_md5="30f4e7c9dfa3034995cab415d64e3bd6"
-
 dest_files=[ "res://.import/SolarSystem.png-2a67c63d8613f3c26114d345112aee86.stex" ]
-dest_md5="7fa2885ac3d6546127d4b846a2dd69d2"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

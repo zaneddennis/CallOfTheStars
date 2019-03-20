@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/TinyWing0R_28_16_outlineBase.png-e78ef1b863e78feb86843bc7bf5248d6.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Ships/Tiny/TinyWing0R_28_16/TinyWing0R_28_16_outlineBase.png"
-source_md5="60bccc73cfce7086d00efd50bddb3853"
-
 dest_files=[ "res://.import/TinyWing0R_28_16_outlineBase.png-e78ef1b863e78feb86843bc7bf5248d6.stex" ]
-dest_md5="966caee0dbee440a85f83a259abba526"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

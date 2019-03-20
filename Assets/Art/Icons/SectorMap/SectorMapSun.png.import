@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/SectorMapSun.png-99a1b26b25d6b845182179a053a804bb.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Icons/SectorMap/SectorMapSun.png"
-source_md5="73edb258fa9dcac22c7af7875b52884f"
-
 dest_files=[ "res://.import/SectorMapSun.png-99a1b26b25d6b845182179a053a804bb.stex" ]
-dest_md5="bc01509ea0ead67f6f86186248fa2063"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

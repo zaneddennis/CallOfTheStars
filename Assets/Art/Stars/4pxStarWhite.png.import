@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/4pxStarWhite.png-328530cfa1d8c825eadfcd061718a113.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Stars/4pxStarWhite.png"
-source_md5="c6cba04f91be9cff0bf96bf802ecd081"
-
 dest_files=[ "res://.import/4pxStarWhite.png-328530cfa1d8c825eadfcd061718a113.stex" ]
-dest_md5="cfa4a5baf74e688ce2d2df233f46c03f"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

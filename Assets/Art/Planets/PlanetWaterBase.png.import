@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/PlanetWaterBase.png-b2eccd7b848cfb4762534be6ed028e4d.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Planets/PlanetWaterBase.png"
-source_md5="3e87cc306e4d191629f7cd0142b8383d"
-
 dest_files=[ "res://.import/PlanetWaterBase.png-b2eccd7b848cfb4762534be6ed028e4d.stex" ]
-dest_md5="b38b40fa5d1dce3d81eae86619982727"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

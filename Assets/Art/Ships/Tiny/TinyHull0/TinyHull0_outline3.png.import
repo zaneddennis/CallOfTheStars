@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/TinyHull0_outline3.png-4cfc243674fdaf897ebb971886b674ea.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Ships/Tiny/TinyHull0/TinyHull0_outline3.png"
-source_md5="db281f197806115693165166eb8c9d2f"
-
 dest_files=[ "res://.import/TinyHull0_outline3.png-4cfc243674fdaf897ebb971886b674ea.stex" ]
-dest_md5="21b815d208822b1d0dd125308d51fa47"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

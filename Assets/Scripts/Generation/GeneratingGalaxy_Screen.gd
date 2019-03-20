@@ -11,10 +11,39 @@ var ActiveGame = load("res://Assets/Scripts/Utility/ActiveGame.gd")
 
 var slotName_LE
 
+var isGenerating = false
+var firstRun = true
+var gg = null
+var progress = 0
 
 func _ready():
 	SSGenerator = get_node("SSGenerator")
 	slotName_LE = get_node("GG_Background/SlotName_LineEdit")
+
+#warning-ignore:unused_argument
+func _process(delta):
+	
+	if isGenerating:
+		if firstRun:
+			gg = GG()
+			firstRun = false
+		else:
+			gg = gg.resume()
+			# update progress bar
+			progress += 1
+			$GG_Background/ProgressBar.value = progress
+			
+			if typeof(gg) == TYPE_STRING and gg == "finished":
+				isGenerating = false
+				# move on to begin game
+
+# testing coroutines
+func GG():
+	for i in range(24):
+		OS.delay_msec(500)
+		print(i)
+		yield()
+	return "finished"
 
 
 func GenerateGalaxy(slot):
@@ -23,6 +52,7 @@ func GenerateGalaxy(slot):
 	var gal = []
 	for i in range(GAL_SIZE):
 		gal.append([])
+#warning-ignore:unused_variable
 		for j in range(GAL_SIZE):
 			gal[i].append(0)
 	
@@ -63,6 +93,7 @@ func PutSupermassive(gal):
 	var startX = GAL_SIZE/2 - 1
 	var startY = GAL_SIZE/2 - rows/2
 	
+#warning-ignore:unused_variable
 	for r in range(rows/2):
 		for w in range(width):
 			#print(startX+w, startY+r)
@@ -74,6 +105,7 @@ func PutSupermassive(gal):
 	startX = GAL_SIZE/2 - rows/2
 	startY = GAL_SIZE/2
 	width = rows
+#warning-ignore:unused_variable
 	for r in range(rows/2):
 		for w in range(width):
 			gal[startX+w][startY] = 5
@@ -82,6 +114,7 @@ func PutSupermassive(gal):
 		startY += 1
 
 func PlaceSSystems(gal):
+#warning-ignore:unused_variable
 	for i in range(NUM_S_SYSTEMS):
 		var x = randi()%GAL_SIZE
 		var y = randi()%GAL_SIZE
@@ -95,6 +128,7 @@ func PlaceSSystems(gal):
 func PlaceNebulas(gal):
 	var seeds = 3 + randi()%3
 	
+#warning-ignore:unused_variable
 	for s in range(seeds):
 		var seedX = randi()%GAL_SIZE
 		var seedY = randi()%GAL_SIZE
@@ -103,12 +137,14 @@ func PlaceNebulas(gal):
 			seedY = randi()%GAL_SIZE
 		gal[seedX][seedY] = 2
 		
+#warning-ignore:unused_variable
 		var nSize = 3 + randi()%6
 		#grow seeds (do later)
 
 func PlaceDustClouds(gal):
 	var seeds = 3 + randi()%3
 	
+#warning-ignore:unused_variable
 	for s in range(seeds):
 		var seedX = randi()%GAL_SIZE
 		var seedY = randi()%GAL_SIZE
@@ -117,12 +153,14 @@ func PlaceDustClouds(gal):
 			seedY = randi()%GAL_SIZE
 		gal[seedX][seedY] = 3
 		
+#warning-ignore:unused_variable
 		var nSize = 2 + randi()%3
 		#grow seeds (do later)
 
 func PlaceBlackHoles(gal):
 	var seeds = 3 + randi()%3
 	
+#warning-ignore:unused_variable
 	for s in range(seeds):
 		var seedX = randi()%GAL_SIZE
 		var seedY = randi()%GAL_SIZE
@@ -135,9 +173,12 @@ func PlaceBlackHoles(gal):
 
 func _on_GG_Button_pressed():
 	
+	#$GG_Background/GG_Button.hide()
+	
 	if Directory.new().dir_exists("user://SaveFiles"):
 		pass
 	else:
+#warning-ignore:return_value_discarded
 		Directory.new().make_dir("user://SaveFiles")
 	
 	var errorMessage = get_node("GG_Background/SlotError_Label")
@@ -146,20 +187,22 @@ func _on_GG_Button_pressed():
 	elif Directory.new().dir_exists("user://SaveFiles/" + slotName_LE.text):
 		errorMessage.text = "Slot name already taken!"
 	else:
+#warning-ignore:return_value_discarded
 		Directory.new().make_dir("user://SaveFiles/" + slotName_LE.text)
-		GenerateGalaxy(slotName_LE.text)
+		
 		slotName_LE.hide()
 		errorMessage.hide()
 		get_node("GG_Background/GG_Button").hide()
-		get_node("GG_Background/BeginGame_Button").show()
+		#get_node("GG_Background/BeginGame_Button").show()
+		
+		# move GG() to inside _process
+		#GenerateGalaxy(slotName_LE.text)
+		isGenerating = true
 		
 		var ag = ActiveGame.new()
 		ag.Initialize("v0.01", slotName_LE.text)
 		ag.Save(slotName_LE.text)
-		"""var gameFile = File.new()
-		gameFile.open("user://SaveFiles/" + slotName_LE.text + "/game.txt", gameFile.WRITE)
-		gameFile.store_line("0.01\nspace\n")
-		gameFile.close()"""
+
 
 func SaveGalaxy(content, slot):
 	var galSaveFile = File.new()

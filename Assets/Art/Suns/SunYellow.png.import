@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/SunYellow.png-aa97d2d7545985afbbbf57ca47189e7e.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Suns/SunYellow.png"
-source_md5="479a44c55f750e14e802bc9ea7fa84d6"
-
 dest_files=[ "res://.import/SunYellow.png-aa97d2d7545985afbbbf57ca47189e7e.stex" ]
-dest_md5="222a40224b5458daf15a374028a5047f"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

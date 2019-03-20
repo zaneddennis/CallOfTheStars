@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/CurrentGTile.png-3d19e7ed1faeb84e0594c97fb1d4424d.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Icons/GalaxyMap/CurrentGTile.png"
-source_md5="fd0050a14d0904828099c3a4f9b5fc8a"
-
 dest_files=[ "res://.import/CurrentGTile.png-3d19e7ed1faeb84e0594c97fb1d4424d.stex" ]
-dest_md5="eef2edd9f5dad90e6f5c4ad3a0f63b8c"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

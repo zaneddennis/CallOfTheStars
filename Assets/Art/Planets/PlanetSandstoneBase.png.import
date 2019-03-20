@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/PlanetSandstoneBase.png-24a22079a4daa1dd90446890293da6c6.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Planets/PlanetSandstoneBase.png"
-source_md5="2e483bdfdac7157fe4b9ae835ea6e148"
-
 dest_files=[ "res://.import/PlanetSandstoneBase.png-24a22079a4daa1dd90446890293da6c6.stex" ]
-dest_md5="b0a8eb1a141f11929dfa4165ec0db503"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

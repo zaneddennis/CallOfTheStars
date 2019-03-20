@@ -2,6 +2,8 @@ extends Node2D
 
 var Miscellaneous = preload("res://Assets/Scripts/Utility/Miscellaneous.gd")
 
+#var PlanetaryTile = preload("res://Assets/Scripts/Geography/PlanetaryTile.gd")
+
 const RING_SIZE = 512
 
 var planetId
@@ -22,10 +24,13 @@ var atmosphere
 var heightmap
 var surfacemap
 var amap
+var bmap
 var bordermapN
 var bordermapS
 var bordermapE
 var bordermapW
+
+var tiles
 
 var resources = {}  # planet base rate
 
@@ -61,10 +66,13 @@ func initFrom(p):
 	heightmap = p.heightmap
 	surfacemap = p.surfacemap
 	amap = p.amap
+	bmap = p.bmap
 	bordermapN = p.bordermapN
 	bordermapS = p.bordermapS
 	bordermapE = p.bordermapE
 	bordermapW = p.bordermapW
+	
+	tiles = p.tiles
 
 func Activate(center):
 	position = polar2cartesian((ring+3)*RING_SIZE, deg2rad(degreePosition - 90)) + center
@@ -94,10 +102,17 @@ func Save(slot):
 	saveStr += Miscellaneous.MapToStr(heightmap)
 	saveStr += Miscellaneous.MapToStr(surfacemap)
 	saveStr += Miscellaneous.MapToStr(amap)
+	saveStr += Miscellaneous.MapToStr(bmap)
 	saveStr += Miscellaneous.MapToStr(bordermapN)
 	saveStr += Miscellaneous.MapToStr(bordermapS)
 	saveStr += Miscellaneous.MapToStr(bordermapE)
 	saveStr += Miscellaneous.MapToStr(bordermapW)
+	saveStr += Miscellaneous.MapToStr(tiles)
+	
+	# save tiles
+	#for y in range(16):
+	#	for x in range(24):
+	#		saveStr += tiles[x][y].ToSaveStr()
 	
 	var saveFile = File.new()
 	saveFile.open("user://SaveFiles/" + slot + "/planet" + str(planetId) + ".txt", saveFile.WRITE)
@@ -106,6 +121,7 @@ func Save(slot):
 
 static func Load(filepath):
 	var Planet = load("res://Assets/Scripts/Geography/Planet.gd")
+	var PlanetaryTile = load("res://Assets/Scripts/Geography/PlanetaryTile.gd")
 	
 	var f = File.new()
 	f.open(filepath, f.READ)
@@ -134,26 +150,32 @@ static func Load(filepath):
 	p.heightmap = []
 	p.surfacemap = []
 	p.amap = []
+	p.bmap = []
 	p.bordermapN = []
 	p.bordermapS = []
 	p.bordermapE = []
 	p.bordermapW = []
+	p.tiles = []
 	for x in range(24):
 		p.heightmap.append([])
 		p.surfacemap.append([])
 		p.amap.append([])
+		p.bmap.append([])
 		p.bordermapN.append([])
 		p.bordermapS.append([])
 		p.bordermapE.append([])
 		p.bordermapW.append([])
+		p.tiles.append([])
 		for y in range(16):
 			p.heightmap[x].append(-1)
 			p.surfacemap[x].append(-1)
 			p.amap[x].append(-1)
+			p.bmap[x].append(-1)
 			p.bordermapN[x].append(-1)
 			p.bordermapS[x].append(-1)
 			p.bordermapE[x].append(-1)
 			p.bordermapW[x].append(-1)
+			p.tiles[x].append(-1)
 	
 	for y in range(16):
 		var line = f.get_line()
@@ -172,6 +194,12 @@ static func Load(filepath):
 		var row = line.split(" ")
 		for x in range(24):
 			p.amap[x][y] = int(row[x])
+	
+	for y in range(16):
+		var line = f.get_line()
+		var row = line.split(" ")
+		for x in range(24):
+			p.bmap[x][y] = int(row[x])
 	
 	for y in range(16):
 		var line = f.get_line()
@@ -196,6 +224,38 @@ static func Load(filepath):
 		var row = line.split(" ")
 		for x in range(24):
 			p.bordermapW[x][y] = int(row[x])
+	
+	for y in range(16):
+		var line = f.get_line()
+		var row = line.split(" ")
+		for x in range(24):
+			p.tiles[x][y] = int(row[x])
+	
+	# load tiles
+	"""for y in range(16):
+		for x in range(24):
+			var hm = []
+			var sm = []
+			for x_ in range(128):
+				hm.append([])
+				sm.append([])
+				for y_ in range(128):
+					hm[x_].append(-1)
+					sm[x_].append(-1)
+			
+			for y_ in range(128):
+				var line = f.get_line()
+				var row = line.split(" ")
+				for x_ in range(128):
+					hm[x_][y_] = int(row[x])
+			
+			for y_ in range(128):
+				var line = f.get_line()
+				var row = line.split(" ")
+				for x_ in range(128):
+					sm[x_][y_] = int(row[x])
+			
+			p.tiles[x][y] = PlanetaryTile.new(p.surfacemap[x][y], p.heightmap[x][y], hm, sm)"""
 	
 	f.close()
 	

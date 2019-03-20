@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/PlanetaryTilesFull.png-3603a1ee2a6402018cb59d58202f8112.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Tilesets/PlanetaryTilesFull.png"
-source_md5="0288f49135e796ca288f965f21c43646"
-
 dest_files=[ "res://.import/PlanetaryTilesFull.png-3603a1ee2a6402018cb59d58202f8112.stex" ]
-dest_md5="d3f9a03c04b69704d6f65667f23be5fb"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

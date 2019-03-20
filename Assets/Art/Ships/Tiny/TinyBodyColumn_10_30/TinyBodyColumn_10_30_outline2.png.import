@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/TinyBodyColumn_10_30_outline2.png-681222e4acd403272491654bc77fc858.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Ships/Tiny/TinyBodyColumn_10_30/TinyBodyColumn_10_30_outline2.png"
-source_md5="9ee1c9f9e2f0dedf167446d26fa90122"
-
 dest_files=[ "res://.import/TinyBodyColumn_10_30_outline2.png-681222e4acd403272491654bc77fc858.stex" ]
-dest_md5="e309f3f7c6730af8f95144bf47643cf5"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

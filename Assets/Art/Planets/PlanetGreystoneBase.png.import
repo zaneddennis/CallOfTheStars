@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/PlanetGreystoneBase.png-22a1df4df47736ebd7a40f78e0ea724c.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Art/Planets/PlanetGreystoneBase.png"
-source_md5="d80da68169b73029b9e7ff3e7a1c9049"
-
 dest_files=[ "res://.import/PlanetGreystoneBase.png-22a1df4df47736ebd7a40f78e0ea724c.stex" ]
-dest_md5="fc21b0c6faf12a97939f5d981bd678e1"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

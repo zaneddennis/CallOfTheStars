@@ -43,6 +43,5 @@ func Load(slot):
 	while File.new().file_exists("user://SaveFiles/" + ag.slot + "/planet" + str(i) + ".txt"):
 		var p = Planet.Load("user://SaveFiles/" + ag.slot + "/planet" + str(i) + ".txt")
 		planets.append(p)
-		
 		i += 1
 	

@@ -107,12 +107,11 @@ func Save(slot):
 	saveStr += Miscellaneous.MapToStr(bordermapS)
 	saveStr += Miscellaneous.MapToStr(bordermapE)
 	saveStr += Miscellaneous.MapToStr(bordermapW)
-	saveStr += Miscellaneous.MapToStr(tiles)
 	
 	# save tiles
-	#for y in range(16):
-	#	for x in range(24):
-	#		saveStr += tiles[x][y].ToSaveStr()
+	"""for y in range(16):
+		for x in range(24):
+			saveStr += tiles[x][y].ToSaveStr()"""
 	
 	var saveFile = File.new()
 	saveFile.open("user://SaveFiles/" + slot + "/planet" + str(planetId) + ".txt", saveFile.WRITE)
@@ -225,37 +224,8 @@ static func Load(filepath):
 		for x in range(24):
 			p.bordermapW[x][y] = int(row[x])
 	
-	for y in range(16):
-		var line = f.get_line()
-		var row = line.split(" ")
-		for x in range(24):
-			p.tiles[x][y] = int(row[x])
-	
 	# load tiles
-	"""for y in range(16):
-		for x in range(24):
-			var hm = []
-			var sm = []
-			for x_ in range(128):
-				hm.append([])
-				sm.append([])
-				for y_ in range(128):
-					hm[x_].append(-1)
-					sm[x_].append(-1)
-			
-			for y_ in range(128):
-				var line = f.get_line()
-				var row = line.split(" ")
-				for x_ in range(128):
-					hm[x_][y_] = int(row[x])
-			
-			for y_ in range(128):
-				var line = f.get_line()
-				var row = line.split(" ")
-				for x_ in range(128):
-					sm[x_][y_] = int(row[x])
-			
-			p.tiles[x][y] = PlanetaryTile.new(p.surfacemap[x][y], p.heightmap[x][y], hm, sm)"""
+	pass
 	
 	f.close()
 	

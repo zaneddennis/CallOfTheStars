@@ -19,6 +19,13 @@ config/name="CallOfTheStars"
 run/main_scene="res://Base.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/enable=false
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/function_may_yield=false
+
 [display]
 
 window/size/width=1600

@@ -19,6 +19,11 @@ func RandomVector2(bounds):
 	var y = randi() % int(bounds.y)
 	return Vector2(x, y)
 
+func Manhattan(v1, v2):
+	var dx = abs(v1.x - v2.x)
+	var dy = abs(v1.y - v2.y)
+	return dx + dy
+
 # takes a 2D array "tilemap"
 static func MapToStr(map):
 	var output = ""

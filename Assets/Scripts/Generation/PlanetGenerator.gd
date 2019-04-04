@@ -1,5 +1,7 @@
 extends Node
 
+signal completedPlanet
+
 var Planet = load("res://Assets/Scripts/Geography/Planet.gd")
 
 var PlanetaryTileset = load("res://Assets/Art/Tilesets/PlanetaryTileset.tres")
@@ -8,6 +10,7 @@ var BordersTileset = load("res://Assets/Art/Tilesets/PlanetaryBorderTileset.tres
 
 var nameGen
 var rand
+var ptGenerator
 
 var xLen = 24
 var yLen = 16
@@ -26,8 +29,10 @@ var resources = {"Aluminum_Ore": 0.35, "Chromite": 0.2, "Coal": 0.6, "Copper_Ore
 func _ready():
 	nameGen = get_node("/root/Base/Utilities/MarkovNamers/LocationNamers/EnglishLocationNamer")
 	rand = get_node("/root/Base/Utilities/Random")
+	ptGenerator = get_parent().get_node("PTGenerator")
 
-func GeneratePlanet(pId, sId, ring, slot):
+
+func GeneratePlanetSeq(pId, sId, ring, slot):
 	print("Generating Planet " + str(pId))
 	
 	var p = Planet.new()
@@ -58,7 +63,7 @@ func GeneratePlanet(pId, sId, ring, slot):
 		if s in [p.baseSurface, p.secondarySurface, p.tertiarySurface]:
 			p.atmosphere = "Breathable"
 	
-	for res in resources:  # todo: make Oil and Wood (separate rule-based system)
+	for res in resources:
 		if randf() < resources[res]:
 			p.resources[res] = rand.IrwinHall(resources[res], 0.16, 0.01, 0.99)
 	
@@ -71,10 +76,17 @@ func GeneratePlanet(pId, sId, ring, slot):
 	p.bordermapE = GenerateBorderMapE(p.surfacemap)
 	p.bordermapW = GenerateBorderMapW(p.surfacemap)
 	
-	#p.tiles = GeneratePlanetaryTiles(p.heightmap, p.surfacemap)
-	p.tiles = GeneratePlanetaryTiles(pId)
+	#p.tiles = GeneratePlanetaryTiles(p, slot)
+	p.tiles = []
+	for x in range(xLen):
+		p.tiles.append([])
+		for y in range(yLen):
+			p.tiles[x].append(null)
 	
-	p.Save(slot)
+	#p.Save(slot)
+	
+	emit_signal("completedPlanet")
+	return p
 
 func GenerateHeightmap(numBoxes, maxX, maxY, numBoxes2=0, maxX2=0, maxY2=0):
 	var map = []
@@ -271,37 +283,14 @@ func DrawBox(map, maxX, maxY):
 	
 	return map
 
-func GeneratePlanetaryTiles(pId):
+"""func GeneratePlanetaryTiles(p, slot):
 	var tiles = []
-	var ptId = 384 * pId
+	var ptId = 384 * p.planetId
 	for x in range(24):
 		tiles.append([])
 		for y in range(16):
 			tiles[x].append(ptId)
-			# GeneratePlanetaryTile(ptId, pId, s, h)
+			#ptGenerator.GeneratePT(ptId, x, y, p, slot)
 			ptId += 1
 	
-	return tiles
-
-"""func GeneratePlanetaryTiles(hmap, smap):
-	var tiles = []
-	for x in range(24):
-		tiles.append([])
-		for y in range(16):
-			#print("Generating PT " + str(x) + " " + str(y))
-			tiles[x].append(GeneratePlanetaryTile(hmap[x][y], smap[x][y]))
-	
-	return tiles
-
-func GeneratePlanetaryTile(s, h):
-	var hmap = []
-	var smap = []
-	
-	for x in range(128):
-		hmap.append([])
-		smap.append([])
-		for y in range(128):
-			hmap[x].append(h)
-			smap[x].append(0)
-	
-	return PlanetaryTile.new(s, h, hmap, smap)"""
+	return tiles"""

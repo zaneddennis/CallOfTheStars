@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/Scripts/Utility/Base.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scripts/Menus/Main_Menu.gd" type="Script" id=2]
@@ -7,30 +7,31 @@
 [ext_resource path="res://Assets/Scripts/Generation/GeneratingGalaxy_Screen.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Scripts/Generation/SSGenerator.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Scripts/Generation/PlanetGenerator.gd" type="Script" id=7]
-[ext_resource path="res://Assets/Scripts/Utility/ActiveGame.gd" type="Script" id=8]
-[ext_resource path="res://Assets/Scripts/UI/InputHandler.gd" type="Script" id=9]
-[ext_resource path="res://Assets/Art/Textures/RoundedRectWhite.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Scripts/UI/ThrottleBar.gd" type="Script" id=11]
-[ext_resource path="res://Assets/Scripts/UI/Terminal.gd" type="Script" id=12]
-[ext_resource path="res://Assets/Art/Icons/SectorMap/SectorMapSun.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Art/Icons/GalaxyMap/CurrentGTile.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Scripts/UI/InterfaceBar.gd" type="Script" id=15]
-[ext_resource path="res://Assets/Scripts/Menus/PauseMenu.gd" type="Script" id=16]
-[ext_resource path="res://Assets/Scripts/UI/GalaxyMap.gd" type="Script" id=17]
-[ext_resource path="res://Assets/Art/Icons/gridSelector16.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Art/Icons/GalaxyMap/jumpvalidity.tres" type="TileSet" id=19]
-[ext_resource path="res://Assets/Scripts/UI/Orbit.gd" type="Script" id=20]
-[ext_resource path="res://Assets/Art/Tilesets/PlanetaryTileset.tres" type="TileSet" id=21]
-[ext_resource path="res://Assets/Art/Tilesets/PlanetaryBorderTileset.tres" type="TileSet" id=22]
-[ext_resource path="res://Assets/Art/Tilesets/PlanetaryBTiles.tres" type="TileSet" id=23]
-[ext_resource path="res://Assets/Art/Icons/gridselect24.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Scripts/Geography/Galaxy.gd" type="Script" id=25]
-[ext_resource path="res://Assets/Scenes/Ships/Ship.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Assets/Scenes/Characters/Character.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Assets/Scripts/Utility/Miscellaneous.gd" type="Script" id=28]
-[ext_resource path="res://Assets/Scripts/Utility/MarkovNamers.gd" type="Script" id=29]
-[ext_resource path="res://Assets/Scripts/Utility/MarkovNamer.gd" type="Script" id=30]
-[ext_resource path="res://Assets/Scripts/Utility/Random.gd" type="Script" id=31]
+[ext_resource path="res://Assets/Scripts/Generation/PTGenerator.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Scripts/Utility/ActiveGame.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Scripts/UI/InputHandler.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Art/Textures/RoundedRectWhite.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Scripts/UI/ThrottleBar.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Scripts/UI/Terminal.gd" type="Script" id=13]
+[ext_resource path="res://Assets/Art/Icons/SectorMap/SectorMapSun.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Art/Icons/GalaxyMap/CurrentGTile.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Scripts/UI/InterfaceBar.gd" type="Script" id=16]
+[ext_resource path="res://Assets/Scripts/Menus/PauseMenu.gd" type="Script" id=17]
+[ext_resource path="res://Assets/Scripts/UI/GalaxyMap.gd" type="Script" id=18]
+[ext_resource path="res://Assets/Art/Icons/gridSelector16.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Art/Icons/GalaxyMap/jumpvalidity.tres" type="TileSet" id=20]
+[ext_resource path="res://Assets/Scripts/UI/Orbit.gd" type="Script" id=21]
+[ext_resource path="res://Assets/Art/Tilesets/PlanetaryTileset.tres" type="TileSet" id=22]
+[ext_resource path="res://Assets/Art/Tilesets/PlanetaryBorderTileset.tres" type="TileSet" id=23]
+[ext_resource path="res://Assets/Art/Tilesets/PlanetaryBTiles.tres" type="TileSet" id=24]
+[ext_resource path="res://Assets/Art/Icons/gridselect24.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Scripts/Geography/Galaxy.gd" type="Script" id=26]
+[ext_resource path="res://Assets/Scenes/Ships/Ship.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Assets/Scenes/Characters/Character.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Assets/Scripts/Utility/Miscellaneous.gd" type="Script" id=29]
+[ext_resource path="res://Assets/Scripts/Utility/MarkovNamers.gd" type="Script" id=30]
+[ext_resource path="res://Assets/Scripts/Utility/MarkovNamer.gd" type="Script" id=31]
+[ext_resource path="res://Assets/Scripts/Utility/Random.gd" type="Script" id=32]
 
 [node name="Base" type="Node2D"]
 script = ExtResource( 1 )
@@ -205,15 +206,26 @@ valign = 1
 margin_right = 100.0
 margin_bottom = 14.0
 
+[node name="Progress_Label" type="Label" parent="Screens/GeneratingGalaxy_Screen/GG_Background"]
+margin_left = 128.0
+margin_top = 208.0
+margin_right = 384.0
+margin_bottom = 240.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+valign = 1
+
 [node name="SSGenerator" type="Node" parent="Screens/GeneratingGalaxy_Screen"]
 script = ExtResource( 6 )
 
 [node name="PlanetGenerator" type="Node" parent="Screens/GeneratingGalaxy_Screen"]
 script = ExtResource( 7 )
 
+[node name="PTGenerator" type="Node" parent="Screens/GeneratingGalaxy_Screen"]
+script = ExtResource( 8 )
+
 [node name="ActiveGame" type="Node2D" parent="."]
 visible = false
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="Background_ColorRect" type="ColorRect" parent="ActiveGame"]
 editor/display_folded = true
@@ -226,7 +238,7 @@ color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
 [node name="Planets" type="Node2D" parent="ActiveGame/Background_ColorRect"]
 
 [node name="InputHandler" type="Node2D" parent="ActiveGame"]
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="FlightHUD_CanvasLayer" type="CanvasLayer" parent="ActiveGame"]
 editor/display_folded = true
@@ -251,12 +263,12 @@ anchor_bottom = 0.5
 margin_left = -32.0
 margin_top = -192.0
 margin_bottom = 192.0
-texture_progress = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
 fill_mode = 3
 nine_patch_stretch = true
 stretch_margin_top = 8
 stretch_margin_bottom = 8
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 
 [node name="Terminal_ColorRect" type="ColorRect" parent="ActiveGame/FlightHUD_CanvasLayer"]
 editor/display_folded = true
@@ -270,7 +282,7 @@ margin_top = -296.0
 margin_right = 224.0
 margin_bottom = -32.0
 color = Color( 0.666667, 0.666667, 0.666667, 0.784314 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 
 [node name="SectorMap_CR" type="ColorRect" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect"]
 margin_left = 4.0
@@ -281,11 +293,11 @@ color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
 
 [node name="Sun" type="Sprite" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR"]
 position = Vector2( 128, 128 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [node name="Player" type="Sprite" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
 [node name="SectorName_Label" type="Label" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR"]
 margin_left = 260.0
@@ -324,7 +336,7 @@ margin_bottom = 152.0
 mouse_filter = 0
 size_flags_vertical = 0
 value = 5.0
-texture_progress = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_right = 8
@@ -397,7 +409,7 @@ margin_bottom = -64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 
 [node name="Button7" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer"]
 margin_right = 64.0
@@ -444,7 +456,7 @@ size_flags_vertical = 3
 pause_mode = 2
 editor/display_folded = true
 layer = 2
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 
 [node name="PauseMenu_Background" type="ColorRect" parent="ActiveGame/PauseMenu_CanvasLayer"]
 visible = false
@@ -494,7 +506,7 @@ text = "Quit to Desktop"
 
 [node name="GalaxyMap_CanvasLayer" type="CanvasLayer" parent="ActiveGame"]
 editor/display_folded = true
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 
 [node name="GalaxyMap_ColorRect" type="ColorRect" parent="ActiveGame/GalaxyMap_CanvasLayer"]
 editor/display_folded = true
@@ -522,17 +534,17 @@ color = Color( 0, 0, 0, 0.784314 )
 position = Vector2( 8, 8 )
 
 [node name="GalTileSelector_Sprite" type="Sprite" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect/Icons"]
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 
 [node name="ValidJumps_TileMap" type="TileMap" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect"]
-tile_set = ExtResource( 19 )
+tile_set = ExtResource( 20 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
 [node name="CurrentGTile" type="Sprite" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect"]
 position = Vector2( 8, 8 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
 [node name="GTMap_ColorRect" type="ColorRect" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect"]
 anchor_top = 1.0
@@ -568,7 +580,7 @@ text = "JUMP"
 
 [node name="Orbit_CanvasLayer" type="CanvasLayer" parent="ActiveGame"]
 editor/display_folded = true
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 
 [node name="Orbit_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer"]
 visible = false
@@ -590,37 +602,37 @@ margin_bottom = 464.0
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="PlanetMap_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 21 )
+tile_set = ExtResource( 22 )
 cell_size = Vector2( 24, 24 )
 format = 1
 
 [node name="BorderN_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 22 )
-cell_size = Vector2( 24, 24 )
-format = 1
-
-[node name="BorderS_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 22 )
-cell_size = Vector2( 24, 24 )
-format = 1
-
-[node name="BorderE_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 22 )
-cell_size = Vector2( 24, 24 )
-format = 1
-
-[node name="BorderW_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 22 )
-cell_size = Vector2( 24, 24 )
-format = 1
-
-[node name="PlanetBTiles_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
 tile_set = ExtResource( 23 )
 cell_size = Vector2( 24, 24 )
 format = 1
 
+[node name="BorderS_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
+tile_set = ExtResource( 23 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="BorderE_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
+tile_set = ExtResource( 23 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="BorderW_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
+tile_set = ExtResource( 23 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="PlanetBTiles_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
+tile_set = ExtResource( 24 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
 [node name="TileSelector_Sprite" type="Sprite" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 offset = Vector2( 12, 12 )
 
 [node name="TileInfo_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect"]
@@ -735,7 +747,7 @@ margin_right = 200.0
 margin_bottom = 16.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -748,7 +760,7 @@ margin_right = 200.0
 margin_bottom = 36.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -761,7 +773,7 @@ margin_right = 200.0
 margin_bottom = 56.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -774,7 +786,7 @@ margin_right = 200.0
 margin_bottom = 76.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -787,7 +799,7 @@ margin_right = 200.0
 margin_bottom = 96.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -822,12 +834,12 @@ margin_bottom = -8.0
 text = "LAND"
 
 [node name="Galaxy" type="Node2D" parent="ActiveGame"]
-script = ExtResource( 25 )
+script = ExtResource( 26 )
 
 [node name="Ships" type="Node2D" parent="ActiveGame"]
 editor/display_folded = true
 
-[node name="Test_Ship" parent="ActiveGame/Ships" instance=ExtResource( 26 )]
+[node name="Test_Ship" parent="ActiveGame/Ships" instance=ExtResource( 27 )]
 position = Vector2( 512, 512 )
 sId = 0
 size = "Tiny"
@@ -837,7 +849,7 @@ inArea = true
 [node name="Characters" type="Node2D" parent="ActiveGame"]
 editor/display_folded = true
 
-[node name="Player" parent="ActiveGame/Characters" instance=ExtResource( 27 )]
+[node name="Player" parent="ActiveGame/Characters" instance=ExtResource( 28 )]
 cId = 0
 first = "Zane"
 last = "Dennis"
@@ -855,33 +867,32 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="Utilities" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Miscellaneous" type="Node" parent="Utilities"]
-script = ExtResource( 28 )
+script = ExtResource( 29 )
 
 [node name="MarkovNamers" type="Node" parent="Utilities"]
 editor/display_folded = true
-script = ExtResource( 29 )
+script = ExtResource( 30 )
 
 [node name="LocationNamers" type="Node" parent="Utilities/MarkovNamers"]
 
 [node name="EnglishLocationNamer" type="Node" parent="Utilities/MarkovNamers/LocationNamers"]
-script = ExtResource( 30 )
+script = ExtResource( 31 )
 
 [node name="CharacterNamers" type="Node" parent="Utilities/MarkovNamers"]
 
 [node name="EnglishFirstNamerM" type="Node" parent="Utilities/MarkovNamers/CharacterNamers"]
-script = ExtResource( 30 )
+script = ExtResource( 31 )
 
 [node name="EnglishFirstNamerF" type="Node" parent="Utilities/MarkovNamers/CharacterNamers"]
-script = ExtResource( 30 )
+script = ExtResource( 31 )
 
 [node name="EnglishLastNamer" type="Node" parent="Utilities/MarkovNamers/CharacterNamers"]
-script = ExtResource( 30 )
+script = ExtResource( 31 )
 
 [node name="Random" type="Node" parent="Utilities"]
-script = ExtResource( 31 )
+script = ExtResource( 32 )
 
 [connection signal="pressed" from="Screens/Menu_Screens/Main_Menu/MM_Background/NewGame_Button" to="Screens/Menu_Screens/Main_Menu" method="_on_NewGame_Button_pressed"]
 [connection signal="pressed" from="Screens/Menu_Screens/Main_Menu/MM_Background/LoadGame_Button" to="Screens/Menu_Screens/Main_Menu" method="_on_LoadGame_Button_pressed"]
@@ -891,6 +902,8 @@ script = ExtResource( 31 )
 [connection signal="pressed" from="Screens/Menu_Screens/LoadGame_Menu/LG_Background/LG_Button" to="Screens/Menu_Screens/LoadGame_Menu" method="_on_LG_Button_pressed"]
 [connection signal="pressed" from="Screens/GeneratingGalaxy_Screen/GG_Background/GG_Button" to="Screens/GeneratingGalaxy_Screen" method="_on_GG_Button_pressed"]
 [connection signal="pressed" from="Screens/GeneratingGalaxy_Screen/GG_Background/BeginGame_Button" to="Screens/GeneratingGalaxy_Screen" method="_on_BeginGame_Button_pressed"]
+[connection signal="completedSS" from="Screens/GeneratingGalaxy_Screen/SSGenerator" to="Screens/GeneratingGalaxy_Screen" method="_on_SSGenerator_completedSS"]
+[connection signal="completedPlanet" from="Screens/GeneratingGalaxy_Screen/PlanetGenerator" to="Screens/GeneratingGalaxy_Screen" method="_on_PlanetGenerator_completedPlanet"]
 [connection signal="pressed" from="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer/Button7" to="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer" method="_on_Button7_pressed"]
 [connection signal="pressed" from="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer/Resume_Button" to="ActiveGame/PauseMenu_CanvasLayer" method="_on_Resume_Button_pressed"]
 [connection signal="pressed" from="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer/Save_Button" to="ActiveGame/PauseMenu_CanvasLayer" method="_on_Save_Button_pressed"]

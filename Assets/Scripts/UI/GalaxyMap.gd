@@ -1,14 +1,20 @@
 extends CanvasLayer
 
+var Miscellaneous
+
 var galaxy
 var ag
 
 var selectedX
 var selectedY
 
-var ssIcon = load("res://Assets/Scenes/Icons/SolarSystemIcon.tscn")
+var SSIcon = load("res://Assets/Scenes/Icons/SolarSystemIcon.tscn")
+var BHIcon = load("res://Assets/Scenes/Icons/BlackHoleIcon.tscn")
+var NIcon = load("res://Assets/Scenes/Icons/NebulaIcon.tscn")
 
 func _ready():
+	Miscellaneous = get_tree().get_root().get_node("Base/Utilities/Miscellaneous")
+	
 	galaxy = get_parent().get_node("Galaxy")
 	ag = get_parent()
 
@@ -28,6 +34,10 @@ func SelectTile(x, y):
 
 	if galaxy.galTilemap[x][y] == "1":
 		$GalaxyMap_ColorRect/SystemName_Label.text = "UNCHARTED SYSTEM"
+	elif galaxy.galTilemap[x][y] == "2":
+		$GalaxyMap_ColorRect/SystemName_Label.text = "NEBULA"
+	elif galaxy.galTilemap[x][y] == "4":
+		$GalaxyMap_ColorRect/SystemName_Label.text = "BLACK HOLE"
 	else:
 		$GalaxyMap_ColorRect/SystemName_Label.text = "DEEP SPACE"
 
@@ -45,18 +55,26 @@ func Activate():
 	for x in range(24):
 		for y in range(24):
 			vjTM.set_cell(x, y, -1)
-			if x == ag.galacticPos.x and abs(y - ag.galacticPos.y) <= ag.jumpLimit:
-				vjTM.set_cell(x, y, 0)
-			elif y == ag.galacticPos.y and abs(x - ag.galacticPos.x) <= ag.jumpLimit:
-				vjTM.set_cell(x, y, 0)
+			
+			if galaxy.galTilemap[x][y] in ["0", "1"]:
+				if Miscellaneous.Manhattan(Vector2(ag.galacticPos.x, ag.galacticPos.y), Vector2(x, y)) <= ag.JUMP_LIMIT:
+					vjTM.set_cell(x, y, 0)
 
 func Initialize():
 	for x in range(24):
 		for y in range(24):
 			if galaxy.galTilemap[x][y] == "1":
-				var i = ssIcon.instance()
-				i.position = Vector2(16*x, 16*y)
-				$GalaxyMap_ColorRect/Map_ColorRect/Icons.add_child(i)
+				var icon = SSIcon.instance()
+				icon.position = Vector2(16*x, 16*y)
+				$GalaxyMap_ColorRect/Map_ColorRect/Icons.add_child(icon)
+			elif galaxy.galTilemap[x][y] == "2":
+				var icon = NIcon.instance()
+				icon.position = Vector2(16*x, 16*y)
+				$GalaxyMap_ColorRect/Map_ColorRect/Icons.add_child(icon)
+			elif galaxy.galTilemap[x][y] == "4":
+				var icon = BHIcon.instance()
+				icon.position = Vector2(16*x, 16*y)
+				$GalaxyMap_ColorRect/Map_ColorRect/Icons.add_child(icon)
 
 func _on_LockCoords_Button_pressed():
 	$GalaxyMap_ColorRect.hide()

@@ -1,9 +1,9 @@
 extends Node2D
 
 # classes
-var GalacticTile = load("res://Assets/Scripts/Geography/GalacticTile.gd")
-var SolarSystem = load("res://Assets/Scripts/Geography/SolarSystem.gd")
-var PlanetScript = load("res://Assets/Scripts/Geography/Planet.gd")
+#var GalacticTile = load("res://Assets/Scripts/Geography/GalacticTile.gd")
+#var SolarSystem = load("res://Assets/Scripts/Geography/SolarSystem.gd")
+#var PlanetScript = load("res://Assets/Scripts/Geography/Planet.gd")
 
 var BackgroundStar = load("res://Assets/Scenes/Geography/BGStar.tscn")
 var Sun = load("res://Assets/Scenes/Geography/Sun.tscn")
@@ -15,7 +15,7 @@ var galaxy
 var miscellaneous
 
 # temporary hardcoded things
-var jumpLimit = 5
+var JUMP_LIMIT = 5
 
 # saved things below here
 var version

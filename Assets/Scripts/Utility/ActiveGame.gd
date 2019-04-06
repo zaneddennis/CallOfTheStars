@@ -30,9 +30,6 @@ func _ready():
 	miscellaneous = get_parent().get_node("Utilities/Miscellaneous")
 	
 	randomize()
-	"""for s in get_node("Background_ColorRect").get_children():
-		s.position.x = rand_range(0.0, background_CR.rect_size.x)
-		s.position.y = rand_range(0.0, background_CR.rect_size.y)"""
 
 func _process(delta):
 	pass
@@ -117,7 +114,10 @@ func Save(slot):
 	saveFile.store_line(saveStr)
 	saveFile.close()
 	
-func Load(slot):
+func Load(args):
+	var slot = args[0]
+	var caller = args[1]
+	
 	if Directory.new().dir_exists("user://SaveFiles/" + slot):
 		
 		var gameFile = File.new()
@@ -141,6 +141,8 @@ func Load(slot):
 		
 		show()
 		BeginPlaying()
+		
+		caller.call_deferred("LoadComplete")
 		
 		return "success"
 		

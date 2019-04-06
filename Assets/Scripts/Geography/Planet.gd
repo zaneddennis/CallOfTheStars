@@ -109,9 +109,11 @@ func Save(slot):
 	saveStr += Miscellaneous.MapToStr(bordermapW)
 	
 	# save tiles
-	"""for y in range(16):
-		for x in range(24):
-			saveStr += tiles[x][y].ToSaveStr()"""
+	for x in range(24):
+		for y in range(16):
+			saveStr += "===\n"
+			saveStr += tiles[x][y].ToSaveStr()
+			saveStr += "===\n"
 	
 	var saveFile = File.new()
 	saveFile.open("user://SaveFiles/" + slot + "/planet" + str(planetId) + ".txt", saveFile.WRITE)
@@ -225,7 +227,11 @@ static func Load(filepath):
 			p.bordermapW[x][y] = int(row[x])
 	
 	# load tiles
-	pass
+	for x in range(24):
+		for y in range(16):
+			f.get_line()
+			p.tiles[x][y] = PlanetaryTile.LoadFrom(f)
+			f.get_line()
 	
 	f.close()
 	

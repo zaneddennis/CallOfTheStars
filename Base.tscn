@@ -157,6 +157,7 @@ visible = false
 script = ExtResource( 5 )
 
 [node name="GG_Background" type="ColorRect" parent="Screens/GeneratingGalaxy_Screen"]
+editor/display_folded = true
 margin_left = -256.0
 margin_top = -128.0
 margin_right = 256.0

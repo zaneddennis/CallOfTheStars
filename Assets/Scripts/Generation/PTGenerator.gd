@@ -11,7 +11,7 @@ func GeneratePT(x, y, p):
 	var pt = PlanetaryTile.new(p.planetId, x, y)
 	
 	pt.baseSurface = p.surfacemap[x][y]
-	pt.baseHeight = p.heightmap[x][y]
+	pt.altitude = p.heightmap[x][y]
 	
 	# generate heightmap
 	pt.heightmap = []

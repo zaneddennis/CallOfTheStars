@@ -114,7 +114,7 @@ func GeneratePTilesV3(slot):
 	
 	for y in range(16):
 		for x in range(24):
-			PTGenerator.GeneratePT(x, y, planet)
+			planet.tiles[x][y] = PTGenerator.GeneratePT(x, y, planet)
 	
 	planet.Save(slot)
 	
@@ -214,8 +214,6 @@ func PlaceBlackHoles(gal):
 			seedY = randi()%GAL_SIZE
 		gal[seedX][seedY] = 4
 
-
-
 func _on_GG_Button_pressed():
 	
 	if Directory.new().dir_exists("user://SaveFiles"):
@@ -239,41 +237,27 @@ func _on_GG_Button_pressed():
 			thread.start(self, "GenerateGalaxySeq", slotName_LE.text)
 			$GG_Background/Progress_Label.text = "Generating Galaxy..."
 
-
-func ThreadComplete():
-	thread.wait_to_finish()
-	$GG_Background/ProgressBar.hide()
-	
-	var ag = ActiveGame.new()
-	ag.Initialize("v0.01", slotName_LE.text)
-	ag.Save(slotName_LE.text)
-	
-	$GG_Background/BeginGame_Button.show()
-
-
 func SaveGalaxy(content, slot):
 	var galSaveFile = File.new()
 	galSaveFile.open("user://SaveFiles/" + slot + "/galaxy.txt", galSaveFile.WRITE)
 	galSaveFile.store_line(content)
 	galSaveFile.close()
 
-
 func _on_BeginGame_Button_pressed():
-	get_parent().hide()
+	$GG_Background/BeginGame_Button.hide()
 	
 	var activeGame = get_parent().get_parent().get_node("ActiveGame")
-	activeGame.Load(slotName_LE.text)
+	thread = Thread.new()
+	thread.start(activeGame, "Load", [slotName_LE.text, self])
 
+func LoadComplete():
+	thread.wait_to_finish()
+	
+	get_parent().hide()
 
 func _on_SSGenerator_completedSS(p):
 	$GG_Background/ProgressBar.value += 100.0/24.0
 	pTuples += p
 
-
 func _on_PlanetGenerator_completedPlanet():
 	$GG_Background/ProgressBar.value += 100.0/float(len(pTuples))
-
-
-func _on_GeneratingGalaxy_Screen_ptProgress():
-	#$GG_Background/ProgressBar.value += 100.0/float(len(pTuples))
-	$GG_Background/ProgressBar.value += 1

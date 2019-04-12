@@ -102,9 +102,11 @@ func SelectTile(x, y):
 			var bSurfaceIx = currentPlanet.bmap[x][y]
 			$Orbit_ColorRect/TileInfo_ColorRect/Terrain_Label.text += ", " + pg.bSurfaces[bSurfaceIx]
 
-
 class ResourceSorter:
 	static func sort(a, b):
 		if a[1] > b[1]:
 			return true
 		return false
+
+func _on_Land_Button_pressed():
+	print("Landing on tile ", selectedX, " ", selectedY)

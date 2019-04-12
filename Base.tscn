@@ -580,7 +580,6 @@ margin_bottom = -8.0
 text = "JUMP"
 
 [node name="Orbit_CanvasLayer" type="CanvasLayer" parent="ActiveGame"]
-editor/display_folded = true
 script = ExtResource( 21 )
 
 [node name="Orbit_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer"]
@@ -596,6 +595,7 @@ margin_bottom = 284.0
 color = Color( 0.666667, 0.666667, 0.666667, 0.784314 )
 
 [node name="PlanetMap_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect"]
+editor/display_folded = true
 margin_left = 8.0
 margin_top = 80.0
 margin_right = 584.0
@@ -910,3 +910,4 @@ script = ExtResource( 32 )
 [connection signal="pressed" from="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer/Save_Button" to="ActiveGame/PauseMenu_CanvasLayer" method="_on_Save_Button_pressed"]
 [connection signal="pressed" from="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer/Quit_Button" to="ActiveGame/PauseMenu_CanvasLayer" method="_on_Quit_Button_pressed"]
 [connection signal="pressed" from="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/LockCoords_Button" to="ActiveGame/GalaxyMap_CanvasLayer" method="_on_LockCoords_Button_pressed"]
+[connection signal="pressed" from="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/Land_Button" to="ActiveGame/Orbit_CanvasLayer" method="_on_Land_Button_pressed"]

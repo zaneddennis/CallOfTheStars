@@ -104,7 +104,6 @@ margin_bottom = 96.0
 text = "Galaxy Generation"
 
 [node name="LoadGame_Menu" type="Node2D" parent="Screens/Menu_Screens"]
-editor/display_folded = true
 visible = false
 script = ExtResource( 4 )
 
@@ -145,6 +144,18 @@ margin_right = 384.0
 margin_bottom = 48.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 valign = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Screens/Menu_Screens/LoadGame_Menu/LG_Background"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -24.0
+margin_right = 64.0
+margin_bottom = -8.0
+step = 1.0
 
 [node name="Options_Menu" type="Node2D" parent="Screens/Menu_Screens"]
 visible = false
@@ -911,3 +922,5 @@ script = ExtResource( 32 )
 [connection signal="pressed" from="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer/Quit_Button" to="ActiveGame/PauseMenu_CanvasLayer" method="_on_Quit_Button_pressed"]
 [connection signal="pressed" from="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/LockCoords_Button" to="ActiveGame/GalaxyMap_CanvasLayer" method="_on_LockCoords_Button_pressed"]
 [connection signal="pressed" from="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/Land_Button" to="ActiveGame/Orbit_CanvasLayer" method="_on_Land_Button_pressed"]
+[connection signal="loadPlanet" from="ActiveGame/Galaxy" to="Screens/Menu_Screens/LoadGame_Menu" method="_on_Galaxy_loadPlanet"]
+[connection signal="loadPlanet" from="ActiveGame/Galaxy" to="Screens/GeneratingGalaxy_Screen" method="_on_Galaxy_loadPlanet"]

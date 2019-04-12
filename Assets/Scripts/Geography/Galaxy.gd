@@ -1,5 +1,7 @@
 extends Node2D
 
+signal loadPlanet
+
 var GalacticTile = preload("res://Assets/Scripts/Geography/GalacticTile.gd")
 var SolarSystem = preload("res://Assets/Scripts/Geography/SolarSystem.gd")
 var Planet = preload("res://Assets/Scripts/Geography/Planet.gd")
@@ -45,4 +47,5 @@ func Load(slot):
 		var p = Planet.Load("user://SaveFiles/" + ag.slot + "/planet" + str(i) + ".txt")
 		planets.append(p)
 		i += 1
+		emit_signal("loadPlanet")
 	

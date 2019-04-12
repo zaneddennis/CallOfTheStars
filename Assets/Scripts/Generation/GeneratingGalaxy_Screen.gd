@@ -141,14 +141,13 @@ func EverythingComplete():
 	ag.Save(slotName_LE.text)
 	$GG_Background/BeginGame_Button.show()
 
-func PutSupermassive(gal):
+"""func PutSupermassive(gal):
 	var rows = GAL_SIZE/6
 	var width = 2
 	
 	var startX = GAL_SIZE/2 - 1
 	var startY = GAL_SIZE/2 - rows/2
 	
-#warning-ignore:unused_variable
 	for r in range(rows/2):
 		for w in range(width):
 			gal[startX+w][startY] = 5
@@ -159,16 +158,14 @@ func PutSupermassive(gal):
 	startX = GAL_SIZE/2 - rows/2
 	startY = GAL_SIZE/2
 	width = rows
-#warning-ignore:unused_variable
 	for r in range(rows/2):
 		for w in range(width):
 			gal[startX+w][startY] = 5
 		width -= 2
 		startX += 1
-		startY += 1
+		startY += 1"""
 
 func PlaceSSystems(gal):
-#warning-ignore:unused_variable
 	for i in range(NUM_S_SYSTEMS):
 		var x = randi()%GAL_SIZE
 		var y = randi()%GAL_SIZE
@@ -182,7 +179,6 @@ func PlaceSSystems(gal):
 func PlaceNebulas(gal):
 	var seeds = 3 + randi()%3
 	
-#warning-ignore:unused_variable
 	for s in range(seeds):
 		var seedX = randi()%GAL_SIZE
 		var seedY = randi()%GAL_SIZE
@@ -205,7 +201,6 @@ func PlaceNebulas(gal):
 func PlaceBlackHoles(gal):
 	var seeds = 3 + randi()%3
 	
-#warning-ignore:unused_variable
 	for s in range(seeds):
 		var seedX = randi()%GAL_SIZE
 		var seedY = randi()%GAL_SIZE
@@ -245,12 +240,14 @@ func SaveGalaxy(content, slot):
 
 func _on_BeginGame_Button_pressed():
 	$GG_Background/BeginGame_Button.hide()
+	$GG_Background/ProgressBar.value = 0
 	
 	var activeGame = get_parent().get_parent().get_node("ActiveGame")
 	thread = Thread.new()
 	thread.start(activeGame, "Load", [slotName_LE.text, self])
 
-func LoadComplete():
+func LoadComplete(message):
+	print(message)
 	thread.wait_to_finish()
 	
 	get_parent().hide()
@@ -261,3 +258,7 @@ func _on_SSGenerator_completedSS(p):
 
 func _on_PlanetGenerator_completedPlanet():
 	$GG_Background/ProgressBar.value += 100.0/float(len(pTuples))
+
+func _on_Galaxy_loadPlanet():
+	if visible:
+		$GG_Background/ProgressBar.value += 100.0/float(len(pTuples))

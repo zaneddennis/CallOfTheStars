@@ -142,9 +142,7 @@ func Load(args):
 		show()
 		BeginPlaying()
 		
-		caller.call_deferred("LoadComplete")
-		
-		return "success"
+		caller.call_deferred("LoadComplete", "success")
 		
 	else:
-		return "That save does not exist"
+		caller.call_deferred("LoadFailed", "That save does not exist")

@@ -25,7 +25,7 @@ func GeneratePT(x, y, p):
 	for x in range(64):
 		pt.surfacemap.append([])
 		for y in range(64):
-			pt.surfacemap[x].append(pt.baseSurface)
+			pt.surfacemap[x].append(pt.baseSurface)  # check by string
 	
 	return pt
 	#pt.Save(slot)

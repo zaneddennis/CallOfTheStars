@@ -31,6 +31,8 @@ func _process(delta):
 		"space":
 			if player.currentShip != null:
 				HandleSpaceInput()
+		"land":
+			HandleLandInput()
 		_:
 			pass
 
@@ -99,6 +101,21 @@ func HandleOrbitScreenInput():
 				var y = int(mRelPos.y) / 24
 				get_parent().get_node("Orbit_CanvasLayer").SelectTile(x, y)
 
+func HandleLandInput():
+	HandleLandMovement()
+
+func HandleLandMovement():
+	player.velocity = Vector2(0, 0)
+	
+	if Input.is_action_pressed("throttle_up"):
+		player.velocity.y -= 1
+	if Input.is_action_pressed("throttle_down"):
+		player.velocity.y += 1
+	if Input.is_action_pressed("turn_left"):
+		player.velocity.x -= 1
+	if Input.is_action_pressed("turn_right"):
+		player.velocity.x += 1
+
 func PauseGame():
 	get_tree().paused = true
 	
@@ -111,6 +128,3 @@ func ActionBar(n):
 
 func GalaxyMap():
 	get_parent().get_node("GalaxyMap_CanvasLayer").Activate()
-	#var gm = get_parent().get_node("GalaxyMap_CanvasLayer")
-	#for n in gm.get_children():
-	#	n.visible = true

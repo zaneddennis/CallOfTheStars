@@ -99,7 +99,25 @@ func EnterGTile(x, y):
 	$FlightHUD_CanvasLayer/Terminal_ColorRect.ActivateSectorMap(gt, planets)
 
 func EnterPTile(p, x, y):
-	pass
+	# remove space stuff
+	for n in background_CR.get_node("Stars").get_children() + background_CR.get_node("Planets").get_children():
+		n.queue_free()
+	for n in $Ships.get_children():
+		n.hide()  # will probably have to do more than this
+	background_CR.hide()
+	
+	# remove space HUD
+	for cl in [$FlightHUD_CanvasLayer, $PauseMenu_CanvasLayer, $GalaxyMap_CanvasLayer, $Orbit_CanvasLayer]:
+		for n in cl.get_children():
+			n.hide()
+	
+	$Planetside.Activate("placeholder parameter")
+	
+	$Characters/Player.inShip = -1
+	$Characters/Player.position = Vector2(0, 0)
+	$Characters/Player.rotation = 0
+	
+	phase = "land"
 
 func Save(slot):
 	var saveStr = version + "\n"

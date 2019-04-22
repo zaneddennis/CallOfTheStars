@@ -2,6 +2,8 @@ extends Node
 
 var PlanetaryTile = load("res://Assets/Scripts/Geography/PlanetaryTile.gd")
 
+var planetSurfaces = ["Ice", "Snow", "Greystone", "Limestone", "Sandstone", "Dirt", "Grass", "Water", "Grass", "Water", "Sand"]
+
 func _ready():
 	pass
 
@@ -25,7 +27,7 @@ func GeneratePT(x, y, p):
 	for x in range(64):
 		pt.surfacemap.append([])
 		for y in range(64):
-			pt.surfacemap[x].append(pt.baseSurface)  # check by string
+			pt.surfacemap[x].append(pt.baseSurface)
 	
 	return pt
 	#pt.Save(slot)

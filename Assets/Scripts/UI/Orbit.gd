@@ -110,3 +110,4 @@ class ResourceSorter:
 
 func _on_Land_Button_pressed():
 	print("Landing on tile ", selectedX, " ", selectedY)
+	ag.EnterPTile(currentPlanet, selectedX, selectedY)

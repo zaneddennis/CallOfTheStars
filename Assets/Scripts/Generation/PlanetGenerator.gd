@@ -282,15 +282,3 @@ func DrawBox(map, maxX, maxY):
 			map[x][y] += 1
 	
 	return map
-
-"""func GeneratePlanetaryTiles(p, slot):
-	var tiles = []
-	var ptId = 384 * p.planetId
-	for x in range(24):
-		tiles.append([])
-		for y in range(16):
-			tiles[x].append(ptId)
-			#ptGenerator.GeneratePT(ptId, x, y, p, slot)
-			ptId += 1
-	
-	return tiles"""

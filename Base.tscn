@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Assets/Scripts/Utility/Base.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scripts/Menus/Main_Menu.gd" type="Script" id=2]
@@ -9,37 +9,41 @@
 [ext_resource path="res://Assets/Scripts/Generation/PlanetGenerator.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Scripts/Generation/PTGenerator.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Scripts/Utility/ActiveGame.gd" type="Script" id=9]
-[ext_resource path="res://Assets/Scripts/UI/InputHandler.gd" type="Script" id=10]
-[ext_resource path="res://Assets/Art/Textures/RoundedRectWhite.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Scripts/UI/ThrottleBar.gd" type="Script" id=12]
-[ext_resource path="res://Assets/Scripts/UI/Terminal.gd" type="Script" id=13]
-[ext_resource path="res://Assets/Art/Icons/SectorMap/SectorMapSun.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Art/Icons/GalaxyMap/CurrentGTile.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Scripts/UI/InterfaceBar.gd" type="Script" id=16]
-[ext_resource path="res://Assets/Scripts/Menus/PauseMenu.gd" type="Script" id=17]
-[ext_resource path="res://Assets/Scripts/UI/GalaxyMap.gd" type="Script" id=18]
-[ext_resource path="res://Assets/Art/Icons/gridSelector16.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Art/Icons/GalaxyMap/jumpvalidity.tres" type="TileSet" id=20]
-[ext_resource path="res://Assets/Scripts/UI/Orbit.gd" type="Script" id=21]
-[ext_resource path="res://Assets/Art/Tilesets/PlanetaryTileset.tres" type="TileSet" id=22]
-[ext_resource path="res://Assets/Art/Tilesets/PlanetaryBorderTileset.tres" type="TileSet" id=23]
-[ext_resource path="res://Assets/Art/Tilesets/PlanetaryBTiles.tres" type="TileSet" id=24]
-[ext_resource path="res://Assets/Art/Icons/gridselect24.png" type="Texture" id=25]
-[ext_resource path="res://Assets/Scripts/Geography/Galaxy.gd" type="Script" id=26]
-[ext_resource path="res://Assets/Scenes/Ships/Ship.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Assets/Scenes/Characters/Character.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Assets/Scripts/Utility/Miscellaneous.gd" type="Script" id=29]
-[ext_resource path="res://Assets/Scripts/Utility/MarkovNamers.gd" type="Script" id=30]
-[ext_resource path="res://Assets/Scripts/Utility/MarkovNamer.gd" type="Script" id=31]
-[ext_resource path="res://Assets/Scripts/Utility/Random.gd" type="Script" id=32]
+[ext_resource path="res://Assets/Scripts/Geography/Planetside.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Art/Tilesets/PlanetsideTiles.tres" type="TileSet" id=11]
+[ext_resource path="res://Assets/Scripts/UI/InputHandler.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Art/Textures/RoundedRectWhite.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Scripts/UI/ThrottleBar.gd" type="Script" id=14]
+[ext_resource path="res://Assets/Scripts/UI/Terminal.gd" type="Script" id=15]
+[ext_resource path="res://Assets/Art/Icons/SectorMap/SectorMapSun.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Art/Icons/GalaxyMap/CurrentGTile.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Scripts/UI/InterfaceBar.gd" type="Script" id=18]
+[ext_resource path="res://Assets/Scripts/Menus/PauseMenu.gd" type="Script" id=19]
+[ext_resource path="res://Assets/Scripts/UI/GalaxyMap.gd" type="Script" id=20]
+[ext_resource path="res://Assets/Art/Icons/gridSelector16.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Art/Icons/GalaxyMap/jumpvalidity.tres" type="TileSet" id=22]
+[ext_resource path="res://Assets/Scripts/UI/Orbit.gd" type="Script" id=23]
+[ext_resource path="res://Assets/Art/Tilesets/PlanetaryTileset.tres" type="TileSet" id=24]
+[ext_resource path="res://Assets/Art/Tilesets/PlanetaryBorderTileset.tres" type="TileSet" id=25]
+[ext_resource path="res://Assets/Art/Tilesets/PlanetaryBTiles.tres" type="TileSet" id=26]
+[ext_resource path="res://Assets/Art/Icons/gridselect24.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Scripts/Geography/Galaxy.gd" type="Script" id=28]
+[ext_resource path="res://Assets/Scenes/Ships/Ship.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Assets/Scenes/Characters/Character.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Assets/Scripts/Utility/Miscellaneous.gd" type="Script" id=31]
+[ext_resource path="res://Assets/Scripts/Utility/MarkovNamers.gd" type="Script" id=32]
+[ext_resource path="res://Assets/Scripts/Utility/MarkovNamer.gd" type="Script" id=33]
+[ext_resource path="res://Assets/Scripts/Utility/Random.gd" type="Script" id=34]
 
 [node name="Base" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Screens" type="Node2D" parent="."]
 pause_mode = 2
+editor/display_folded = true
 
 [node name="Menu_Screens" type="Node2D" parent="Screens"]
+editor/display_folded = true
 
 [node name="Main_Menu" type="Node2D" parent="Screens/Menu_Screens"]
 editor/display_folded = true
@@ -104,6 +108,7 @@ margin_bottom = 96.0
 text = "Galaxy Generation"
 
 [node name="LoadGame_Menu" type="Node2D" parent="Screens/Menu_Screens"]
+editor/display_folded = true
 visible = false
 script = ExtResource( 4 )
 
@@ -249,8 +254,17 @@ color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
 
 [node name="Planets" type="Node2D" parent="ActiveGame/Background_ColorRect"]
 
-[node name="InputHandler" type="Node2D" parent="ActiveGame"]
+[node name="Planetside" type="Node2D" parent="ActiveGame"]
+visible = false
 script = ExtResource( 10 )
+
+[node name="Planetside_TileMap" type="TileMap" parent="ActiveGame/Planetside"]
+tile_set = ExtResource( 11 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 34, 0, 0, 35, 0, 0, 36, 0, 0, 37, 0, 0, 38, 0, 0, 39, 0, 0, 40, 0, 0, 41, 0, 0, 42, 0, 0, 43, 0, 0, 44, 0, 0, 45, 0, 0, 46, 0, 0, 47, 0, 0, 48, 0, 0, 49, 0, 0, 50, 0, 0, 51, 0, 0, 52, 0, 0, 53, 0, 0, 54, 0, 0, 55, 0, 0, 56, 0, 0, 57, 0, 0, 58, 0, 0, 59, 0, 0, 60, 0, 0, 61, 0, 0, 62, 0, 0, 63, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 0, 0, 65552, 0, 0, 65553, 0, 0, 65554, 0, 0, 65555, 0, 0, 65556, 0, 0, 65557, 0, 0, 65558, 0, 0, 65559, 0, 0, 65560, 0, 0, 65578, 0, 0, 65579, 0, 0, 65580, 0, 0, 65588, 0, 0, 65589, 0, 0, 65590, 0, 0, 65591, 0, 0, 65599, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0, 131090, 0, 0, 131091, 0, 0, 131092, 0, 0, 131093, 0, 0, 131094, 0, 0, 131095, 0, 0, 131096, 0, 0, 131135, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196671, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262207, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327743, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393279, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458815, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524351, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589887, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655423, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, 0, 0, 720920, 0, 0, 720959, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 786456, 0, 0, 786495, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0, 851992, 0, 0, 851993, 0, 0, 851994, 0, 0, 852031, 0, 0, 917504, 0, 0, 917567, 0, 0, 983040, 0, 0, 983103, 0, 0, 1048576, 0, 0, 1048639, 0, 0, 1114112, 0, 0, 1114175, 0, 0, 1179648, 0, 0, 1179711, 0, 0, 1245184, 0, 0, 1245247, 0, 0, 1310720, 0, 0, 1310783, 0, 0, 1376256, 0, 0, 1376319, 0, 0, 1441792, 0, 0, 1441855, 0, 0, 1507328, 0, 0, 1507391, 0, 0, 1572864, 0, 0, 1572927, 0, 0, 1638400, 0, 0, 1638463, 0, 0, 1703936, 0, 0, 1703999, 0, 0, 1769472, 0, 0, 1769535, 0, 0, 1835008, 0, 0, 1835071, 0, 0, 1900544, 0, 0, 1900607, 0, 0, 1966080, 0, 0, 1966143, 0, 0, 2031616, 0, 0, 2031679, 0, 0, 2097152, 0, 0, 2097215, 0, 0, 2162688, 0, 0, 2162751, 0, 0, 2228224, 0, 0, 2228287, 0, 0, 2293760, 0, 0, 2293823, 0, 0, 2359296, 0, 0, 2359359, 0, 0, 2424832, 0, 0, 2424895, 0, 0, 2490368, 0, 0, 2490431, 0, 0, 2555904, 0, 0, 2555967, 0, 0, 2621440, 0, 0, 2621503, 0, 0, 2686976, 0, 0, 2687039, 0, 0, 2752512, 0, 0, 2752575, 0, 0, 2818048, 0, 0, 2818111, 0, 0, 2883584, 0, 0, 2883647, 0, 0, 2949120, 0, 0, 2949183, 0, 0, 3014656, 0, 0, 3014719, 0, 0, 3080192, 0, 0, 3080255, 0, 0, 3145728, 0, 0, 3145791, 0, 0, 3211264, 0, 0, 3211327, 0, 0, 3276800, 0, 0, 3276863, 0, 0, 3342336, 0, 0, 3342399, 0, 0, 3407872, 0, 0, 3407935, 0, 0, 3473408, 0, 0, 3473471, 0, 0, 3538944, 0, 0, 3539007, 0, 0, 3604480, 0, 0, 3604543, 0, 0, 3670016, 0, 0, 3670079, 0, 0, 3735552, 0, 0, 3735615, 0, 0, 3801088, 0, 0, 3801151, 0, 0, 3866624, 0, 0, 3866687, 0, 0, 3932160, 0, 0, 3932223, 0, 0, 3997696, 0, 0, 3997759, 0, 0, 4063232, 0, 0, 4063295, 0, 0, 4128768, 0, 0, 4128769, 0, 0, 4128770, 0, 0, 4128771, 0, 0, 4128772, 0, 0, 4128773, 0, 0, 4128774, 0, 0, 4128775, 0, 0, 4128776, 0, 0, 4128777, 0, 0, 4128778, 0, 0, 4128779, 0, 0, 4128780, 0, 0, 4128781, 0, 0, 4128782, 0, 0, 4128783, 0, 0, 4128784, 0, 0, 4128785, 0, 0, 4128786, 0, 0, 4128787, 0, 0, 4128788, 0, 0, 4128789, 0, 0, 4128790, 0, 0, 4128791, 0, 0, 4128792, 0, 0, 4128793, 0, 0, 4128794, 0, 0, 4128795, 0, 0, 4128796, 0, 0, 4128797, 0, 0, 4128798, 0, 0, 4128799, 0, 0, 4128800, 0, 0, 4128801, 0, 0, 4128802, 0, 0, 4128803, 0, 0, 4128804, 0, 0, 4128805, 0, 0, 4128806, 0, 0, 4128807, 0, 0, 4128808, 0, 0, 4128809, 0, 0, 4128810, 0, 0, 4128811, 0, 0, 4128812, 0, 0, 4128813, 0, 0, 4128814, 0, 0, 4128815, 0, 0, 4128816, 0, 0, 4128817, 0, 0, 4128818, 0, 0, 4128819, 0, 0, 4128820, 0, 0, 4128821, 0, 0, 4128822, 0, 0, 4128823, 0, 0, 4128824, 0, 0, 4128825, 0, 0, 4128826, 0, 0, 4128827, 0, 0, 4128828, 0, 0, 4128829, 0, 0, 4128830, 0, 0, 4128831, 0, 0 )
+
+[node name="InputHandler" type="Node2D" parent="ActiveGame"]
+script = ExtResource( 12 )
 
 [node name="FlightHUD_CanvasLayer" type="CanvasLayer" parent="ActiveGame"]
 editor/display_folded = true
@@ -275,12 +289,12 @@ anchor_bottom = 0.5
 margin_left = -32.0
 margin_top = -192.0
 margin_bottom = 192.0
-texture_progress = ExtResource( 11 )
+texture_progress = ExtResource( 13 )
 fill_mode = 3
 nine_patch_stretch = true
 stretch_margin_top = 8
 stretch_margin_bottom = 8
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 
 [node name="Terminal_ColorRect" type="ColorRect" parent="ActiveGame/FlightHUD_CanvasLayer"]
 editor/display_folded = true
@@ -294,7 +308,7 @@ margin_top = -296.0
 margin_right = 224.0
 margin_bottom = -32.0
 color = Color( 0.666667, 0.666667, 0.666667, 0.784314 )
-script = ExtResource( 13 )
+script = ExtResource( 15 )
 
 [node name="SectorMap_CR" type="ColorRect" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect"]
 margin_left = 4.0
@@ -305,11 +319,11 @@ color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
 
 [node name="Sun" type="Sprite" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR"]
 position = Vector2( 128, 128 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 
 [node name="Player" type="Sprite" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 
 [node name="SectorName_Label" type="Label" parent="ActiveGame/FlightHUD_CanvasLayer/Terminal_ColorRect/SectorMap_CR"]
 margin_left = 260.0
@@ -348,7 +362,7 @@ margin_bottom = 152.0
 mouse_filter = 0
 size_flags_vertical = 0
 value = 5.0
-texture_progress = ExtResource( 11 )
+texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_right = 8
@@ -421,7 +435,7 @@ margin_bottom = -64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
-script = ExtResource( 16 )
+script = ExtResource( 18 )
 
 [node name="Button7" type="Button" parent="ActiveGame/FlightHUD_CanvasLayer/InterfaceBar_HBoxContainer"]
 margin_right = 64.0
@@ -468,7 +482,7 @@ size_flags_vertical = 3
 pause_mode = 2
 editor/display_folded = true
 layer = 2
-script = ExtResource( 17 )
+script = ExtResource( 19 )
 
 [node name="PauseMenu_Background" type="ColorRect" parent="ActiveGame/PauseMenu_CanvasLayer"]
 visible = false
@@ -518,7 +532,7 @@ text = "Quit to Desktop"
 
 [node name="GalaxyMap_CanvasLayer" type="CanvasLayer" parent="ActiveGame"]
 editor/display_folded = true
-script = ExtResource( 18 )
+script = ExtResource( 20 )
 
 [node name="GalaxyMap_ColorRect" type="ColorRect" parent="ActiveGame/GalaxyMap_CanvasLayer"]
 editor/display_folded = true
@@ -546,17 +560,17 @@ color = Color( 0, 0, 0, 0.784314 )
 position = Vector2( 8, 8 )
 
 [node name="GalTileSelector_Sprite" type="Sprite" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect/Icons"]
-texture = ExtResource( 19 )
+texture = ExtResource( 21 )
 
 [node name="ValidJumps_TileMap" type="TileMap" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect"]
-tile_set = ExtResource( 20 )
+tile_set = ExtResource( 22 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
 [node name="CurrentGTile" type="Sprite" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/Map_ColorRect"]
 position = Vector2( 8, 8 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 
 [node name="GTMap_ColorRect" type="ColorRect" parent="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect"]
 anchor_top = 1.0
@@ -591,7 +605,8 @@ margin_bottom = -8.0
 text = "JUMP"
 
 [node name="Orbit_CanvasLayer" type="CanvasLayer" parent="ActiveGame"]
-script = ExtResource( 21 )
+editor/display_folded = true
+script = ExtResource( 23 )
 
 [node name="Orbit_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer"]
 visible = false
@@ -614,37 +629,37 @@ margin_bottom = 464.0
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="PlanetMap_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 22 )
-cell_size = Vector2( 24, 24 )
-format = 1
-
-[node name="BorderN_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 23 )
-cell_size = Vector2( 24, 24 )
-format = 1
-
-[node name="BorderS_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 23 )
-cell_size = Vector2( 24, 24 )
-format = 1
-
-[node name="BorderE_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 23 )
-cell_size = Vector2( 24, 24 )
-format = 1
-
-[node name="BorderW_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-tile_set = ExtResource( 23 )
-cell_size = Vector2( 24, 24 )
-format = 1
-
-[node name="PlanetBTiles_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
 tile_set = ExtResource( 24 )
 cell_size = Vector2( 24, 24 )
 format = 1
 
+[node name="BorderN_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
+tile_set = ExtResource( 25 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="BorderS_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
+tile_set = ExtResource( 25 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="BorderE_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
+tile_set = ExtResource( 25 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="BorderW_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
+tile_set = ExtResource( 25 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="PlanetBTiles_TileMap" type="TileMap" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
+tile_set = ExtResource( 26 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
 [node name="TileSelector_Sprite" type="Sprite" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect"]
-texture = ExtResource( 25 )
+texture = ExtResource( 27 )
 offset = Vector2( 12, 12 )
 
 [node name="TileInfo_ColorRect" type="ColorRect" parent="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect"]
@@ -759,7 +774,7 @@ margin_right = 200.0
 margin_bottom = 16.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 11 )
+texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -772,7 +787,7 @@ margin_right = 200.0
 margin_bottom = 36.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 11 )
+texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -785,7 +800,7 @@ margin_right = 200.0
 margin_bottom = 56.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 11 )
+texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -798,7 +813,7 @@ margin_right = 200.0
 margin_bottom = 76.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 11 )
+texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -811,7 +826,7 @@ margin_right = 200.0
 margin_bottom = 96.0
 size_flags_vertical = 3
 value = 50.0
-texture_progress = ExtResource( 11 )
+texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 8
@@ -846,12 +861,11 @@ margin_bottom = -8.0
 text = "LAND"
 
 [node name="Galaxy" type="Node2D" parent="ActiveGame"]
-script = ExtResource( 26 )
+script = ExtResource( 28 )
 
 [node name="Ships" type="Node2D" parent="ActiveGame"]
-editor/display_folded = true
 
-[node name="Test_Ship" parent="ActiveGame/Ships" instance=ExtResource( 27 )]
+[node name="Test_Ship" parent="ActiveGame/Ships" instance=ExtResource( 29 )]
 position = Vector2( 512, 512 )
 sId = 0
 size = "Tiny"
@@ -859,9 +873,8 @@ blueprint = "TinyHull0#0#0#1111,TinyBodyColumn_12_28#0#22#0111,TinyWing0R_28_16#
 inArea = true
 
 [node name="Characters" type="Node2D" parent="ActiveGame"]
-editor/display_folded = true
 
-[node name="Player" parent="ActiveGame/Characters" instance=ExtResource( 28 )]
+[node name="Player" parent="ActiveGame/Characters" instance=ExtResource( 30 )]
 cId = 0
 first = "Zane"
 last = "Dennis"
@@ -881,30 +894,30 @@ drag_margin_bottom = 0.0
 [node name="Utilities" type="Node" parent="."]
 
 [node name="Miscellaneous" type="Node" parent="Utilities"]
-script = ExtResource( 29 )
+script = ExtResource( 31 )
 
 [node name="MarkovNamers" type="Node" parent="Utilities"]
 editor/display_folded = true
-script = ExtResource( 30 )
+script = ExtResource( 32 )
 
 [node name="LocationNamers" type="Node" parent="Utilities/MarkovNamers"]
 
 [node name="EnglishLocationNamer" type="Node" parent="Utilities/MarkovNamers/LocationNamers"]
-script = ExtResource( 31 )
+script = ExtResource( 33 )
 
 [node name="CharacterNamers" type="Node" parent="Utilities/MarkovNamers"]
 
 [node name="EnglishFirstNamerM" type="Node" parent="Utilities/MarkovNamers/CharacterNamers"]
-script = ExtResource( 31 )
+script = ExtResource( 33 )
 
 [node name="EnglishFirstNamerF" type="Node" parent="Utilities/MarkovNamers/CharacterNamers"]
-script = ExtResource( 31 )
+script = ExtResource( 33 )
 
 [node name="EnglishLastNamer" type="Node" parent="Utilities/MarkovNamers/CharacterNamers"]
-script = ExtResource( 31 )
+script = ExtResource( 33 )
 
 [node name="Random" type="Node" parent="Utilities"]
-script = ExtResource( 32 )
+script = ExtResource( 34 )
 
 [connection signal="pressed" from="Screens/Menu_Screens/Main_Menu/MM_Background/NewGame_Button" to="Screens/Menu_Screens/Main_Menu" method="_on_NewGame_Button_pressed"]
 [connection signal="pressed" from="Screens/Menu_Screens/Main_Menu/MM_Background/LoadGame_Button" to="Screens/Menu_Screens/Main_Menu" method="_on_LoadGame_Button_pressed"]

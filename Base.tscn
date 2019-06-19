@@ -43,7 +43,6 @@ pause_mode = 2
 editor/display_folded = true
 
 [node name="Menu_Screens" type="Node2D" parent="Screens"]
-editor/display_folded = true
 
 [node name="Main_Menu" type="Node2D" parent="Screens/Menu_Screens"]
 editor/display_folded = true
@@ -169,6 +168,7 @@ visible = false
 visible = false
 
 [node name="GeneratingGalaxy_Screen" type="Node2D" parent="Screens"]
+editor/display_folded = true
 visible = false
 script = ExtResource( 5 )
 
@@ -864,6 +864,7 @@ text = "LAND"
 script = ExtResource( 28 )
 
 [node name="Ships" type="Node2D" parent="ActiveGame"]
+editor/display_folded = true
 
 [node name="Test_Ship" parent="ActiveGame/Ships" instance=ExtResource( 29 )]
 position = Vector2( 512, 512 )
@@ -873,6 +874,7 @@ blueprint = "TinyHull0#0#0#1111,TinyBodyColumn_12_28#0#22#0111,TinyWing0R_28_16#
 inArea = true
 
 [node name="Characters" type="Node2D" parent="ActiveGame"]
+editor/display_folded = true
 
 [node name="Player" parent="ActiveGame/Characters" instance=ExtResource( 30 )]
 cId = 0
@@ -935,5 +937,5 @@ script = ExtResource( 34 )
 [connection signal="pressed" from="ActiveGame/PauseMenu_CanvasLayer/PauseMenu_Background/VBoxContainer/Quit_Button" to="ActiveGame/PauseMenu_CanvasLayer" method="_on_Quit_Button_pressed"]
 [connection signal="pressed" from="ActiveGame/GalaxyMap_CanvasLayer/GalaxyMap_ColorRect/LockCoords_Button" to="ActiveGame/GalaxyMap_CanvasLayer" method="_on_LockCoords_Button_pressed"]
 [connection signal="pressed" from="ActiveGame/Orbit_CanvasLayer/Orbit_ColorRect/Land_Button" to="ActiveGame/Orbit_CanvasLayer" method="_on_Land_Button_pressed"]
-[connection signal="loadPlanet" from="ActiveGame/Galaxy" to="Screens/Menu_Screens/LoadGame_Menu" method="_on_Galaxy_loadPlanet"]
 [connection signal="loadPlanet" from="ActiveGame/Galaxy" to="Screens/GeneratingGalaxy_Screen" method="_on_Galaxy_loadPlanet"]
+[connection signal="loadPlanet" from="ActiveGame/Galaxy" to="Screens/Menu_Screens/LoadGame_Menu" method="_on_Galaxy_loadPlanet"]

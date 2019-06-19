@@ -2,9 +2,6 @@ extends Node2D
 
 #warning-ignore-all:unused_variable
 
-#signal ptProgress
-
-
 var GAL_SIZE = 24
 var NUM_S_SYSTEMS = 24
 

@@ -22,7 +22,4 @@ func _on_LoadGame_Button_pressed():
 	get_parent().get_node("LoadGame_Menu").show()
 
 func _on_Test_Button_pressed():
-	self.call_deferred("DefTest", "Hello world")
-
-func DefTest(arg):
-	print(arg)
+	pass

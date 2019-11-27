@@ -8,9 +8,32 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Biome",
+"language": "GDScript",
+"path": "res://Assets/Scripts/Geography/Biome.gd"
+}, {
+"base": "Reference",
+"class": "BiomeGenerator",
+"language": "GDScript",
+"path": "res://Assets/Scripts/Generation/BiomeGenerator.gd"
+}, {
+"base": "Node",
+"class": "Map",
+"language": "GDScript",
+"path": "res://Assets/Scripts/Utility/Map.gd"
+}, {
+"base": "Node",
+"class": "Miscellaneous",
+"language": "GDScript",
+"path": "res://Assets/Scripts/Utility/Miscellaneous.gd"
+} ]
 _global_script_class_icons={
-
+"Biome": "",
+"BiomeGenerator": "",
+"Map": "",
+"Miscellaneous": ""
 }
 
 [application]

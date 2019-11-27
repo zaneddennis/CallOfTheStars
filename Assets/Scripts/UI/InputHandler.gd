@@ -91,9 +91,9 @@ func HandleGalaxyMapInput():
 func HandleOrbitScreenInput():
 	if get_parent().get_node("Orbit_CanvasLayer/Orbit_ColorRect").visible == true:
 		if Input.is_action_just_pressed("click"):
-			var mCR = get_parent().get_node("Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_ColorRect")
+			var mTR = get_parent().get_node("Orbit_CanvasLayer/Orbit_ColorRect/PlanetMap_TextureRect")
 			var mPos = get_viewport().get_mouse_position()
-			var mapRect = mCR.get_global_rect()
+			var mapRect = mTR.get_global_rect()
 			
 			if mapRect.has_point(mPos):
 				var mRelPos = mPos - mapRect.position

@@ -1,5 +1,7 @@
 extends Node
 
+class_name Miscellaneous
+
 func _ready():
 	randomize()
 
@@ -23,6 +25,12 @@ func Manhattan(v1, v2):
 	var dx = abs(v1.x - v2.x)
 	var dy = abs(v1.y - v2.y)
 	return dx + dy
+
+func Manhattan3(u, v):
+	var dx = abs(u.x - v.x)
+	var dy = abs(u.y - v.y)
+	var dz = abs(u.z - v.z)
+	return dx + dy + dz
 
 # takes a 2D array "tilemap"
 static func MapToStr(map):

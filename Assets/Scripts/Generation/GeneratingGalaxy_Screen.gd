@@ -103,31 +103,8 @@ func PlanetsComplete():
 	$GG_Background/ProgressBar.value = 0
 	
 	thread = Thread.new()
-	thread.start(self, "GeneratePTilesV3", slotName_LE.text)
-
-func GeneratePTilesV3(slot):
-	var planet = planets[ptProgress]
-	print("Generating PTiles for Planet ", ptProgress)
-	
-	for y in range(16):
-		for x in range(24):
-			planet.tiles[x][y] = PTGenerator.GeneratePT(x, y, planet)
-	
-	planet.Save(slot)
-	
-	call_deferred("PTilesComplete")
-
-func PTilesComplete():
-	thread.wait_to_finish()
-	print("Finished PTiles for Planet ", ptProgress)
-	$GG_Background/ProgressBar.value += 100.0 / float(len(pTuples))
-	ptProgress += 1
-	
-	if ptProgress < len(pTuples):
-		thread = Thread.new()
-		thread.start(self, "GeneratePTilesV3", slotName_LE.text)
-	else:
-		EverythingComplete()
+	#thread.start(self, "GeneratePTilesV3", slotName_LE.text)
+	EverythingComplete()
 
 func EverythingComplete():
 	$GG_Background/ProgressBar.value = 100
@@ -137,30 +114,6 @@ func EverythingComplete():
 	ag.Initialize("v0.01", slotName_LE.text)
 	ag.Save(slotName_LE.text)
 	$GG_Background/BeginGame_Button.show()
-
-"""func PutSupermassive(gal):
-	var rows = GAL_SIZE/6
-	var width = 2
-	
-	var startX = GAL_SIZE/2 - 1
-	var startY = GAL_SIZE/2 - rows/2
-	
-	for r in range(rows/2):
-		for w in range(width):
-			gal[startX+w][startY] = 5
-		width += 2
-		startX -= 1
-		startY += 1
-	
-	startX = GAL_SIZE/2 - rows/2
-	startY = GAL_SIZE/2
-	width = rows
-	for r in range(rows/2):
-		for w in range(width):
-			gal[startX+w][startY] = 5
-		width -= 2
-		startX += 1
-		startY += 1"""
 
 func PlaceSSystems(gal):
 	for i in range(NUM_S_SYSTEMS):
